@@ -1,0 +1,438 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB2ABC8A1BCBDC8300F681C5 /* Pachinko.h in Headers */ = {isa = PBXBuildFile; fileRef = FB2ABC891BCBDC8300F681C5 /* Pachinko.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB2ABC911BCBDC8300F681C5 /* Pachinko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */; settings = {ASSET_TAGS = (); }; };
+		FB2ABC961BCBDC8300F681C5 /* PachinkoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABC951BCBDC8300F681C5 /* PachinkoTests.swift */; };
+		FB2ABCAA1BCBDE2500F681C5 /* FeatureStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCA91BCBDE2500F681C5 /* FeatureStatus.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCAC1BCBDE8600F681C5 /* FeatureSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCAB1BCBDE8600F681C5 /* FeatureSignature.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCAE1BCBDEBA00F681C5 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCAD1BCBDEBA00F681C5 /* Feature.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCB01BCBDF1300F681C5 /* FeaturePredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCAF1BCBDF1300F681C5 /* FeaturePredicate.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCB21BCBDF3100F681C5 /* ConditionalFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCB11BCBDF3100F681C5 /* ConditionalFeature.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCB41BCC0D9C00F681C5 /* FeatureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCB31BCC0D9C00F681C5 /* FeatureContext.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCB61BCC0DDE00F681C5 /* FeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCB51BCC0DDE00F681C5 /* FeatureSource.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCB81BCC0E0F00F681C5 /* Togglable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCB71BCC0E0F00F681C5 /* Togglable.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCBA1BCC0E9200F681C5 /* BaseFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCB91BCC0E9200F681C5 /* BaseFeature.swift */; settings = {ASSET_TAGS = (); }; };
+		FB2ABCBC1BCC0EC900F681C5 /* ToggleCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABCBB1BCC0EC900F681C5 /* ToggleCondition.swift */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB2ABC921BCBDC8300F681C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB2ABC7D1BCBDC8300F681C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB2ABC851BCBDC8300F681C5;
+			remoteInfo = Pachinko;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pachinko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB2ABC891BCBDC8300F681C5 /* Pachinko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pachinko.h; sourceTree = "<group>"; };
+		FB2ABC8B1BCBDC8300F681C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB2ABC901BCBDC8300F681C5 /* PachinkoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PachinkoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB2ABC951BCBDC8300F681C5 /* PachinkoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PachinkoTests.swift; sourceTree = "<group>"; };
+		FB2ABC971BCBDC8300F681C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB2ABCA91BCBDE2500F681C5 /* FeatureStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureStatus.swift; sourceTree = "<group>"; };
+		FB2ABCAB1BCBDE8600F681C5 /* FeatureSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureSignature.swift; sourceTree = "<group>"; };
+		FB2ABCAD1BCBDEBA00F681C5 /* Feature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		FB2ABCAF1BCBDF1300F681C5 /* FeaturePredicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePredicate.swift; sourceTree = "<group>"; };
+		FB2ABCB11BCBDF3100F681C5 /* ConditionalFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionalFeature.swift; sourceTree = "<group>"; };
+		FB2ABCB31BCC0D9C00F681C5 /* FeatureContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureContext.swift; sourceTree = "<group>"; };
+		FB2ABCB51BCC0DDE00F681C5 /* FeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureSource.swift; sourceTree = "<group>"; };
+		FB2ABCB71BCC0E0F00F681C5 /* Togglable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Togglable.swift; sourceTree = "<group>"; };
+		FB2ABCB91BCC0E9200F681C5 /* BaseFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFeature.swift; sourceTree = "<group>"; };
+		FB2ABCBB1BCC0EC900F681C5 /* ToggleCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleCondition.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB2ABC821BCBDC8300F681C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB2ABC8D1BCBDC8300F681C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB2ABC911BCBDC8300F681C5 /* Pachinko.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB2ABC7C1BCBDC8300F681C5 = {
+			isa = PBXGroup;
+			children = (
+				FB2ABC881BCBDC8300F681C5 /* Pachinko */,
+				FB2ABC941BCBDC8300F681C5 /* PachinkoTests */,
+				FB2ABC871BCBDC8300F681C5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB2ABC871BCBDC8300F681C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */,
+				FB2ABC901BCBDC8300F681C5 /* PachinkoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB2ABC881BCBDC8300F681C5 /* Pachinko */ = {
+			isa = PBXGroup;
+			children = (
+				FB2ABC891BCBDC8300F681C5 /* Pachinko.h */,
+				FB2ABC8B1BCBDC8300F681C5 /* Info.plist */,
+				FB2ABCA91BCBDE2500F681C5 /* FeatureStatus.swift */,
+				FB2ABCAB1BCBDE8600F681C5 /* FeatureSignature.swift */,
+				FB2ABCAD1BCBDEBA00F681C5 /* Feature.swift */,
+				FB2ABCAF1BCBDF1300F681C5 /* FeaturePredicate.swift */,
+				FB2ABCB11BCBDF3100F681C5 /* ConditionalFeature.swift */,
+				FB2ABCB31BCC0D9C00F681C5 /* FeatureContext.swift */,
+				FB2ABCB51BCC0DDE00F681C5 /* FeatureSource.swift */,
+				FB2ABCB71BCC0E0F00F681C5 /* Togglable.swift */,
+				FB2ABCB91BCC0E9200F681C5 /* BaseFeature.swift */,
+				FB2ABCBB1BCC0EC900F681C5 /* ToggleCondition.swift */,
+			);
+			path = Pachinko;
+			sourceTree = "<group>";
+		};
+		FB2ABC941BCBDC8300F681C5 /* PachinkoTests */ = {
+			isa = PBXGroup;
+			children = (
+				FB2ABC951BCBDC8300F681C5 /* PachinkoTests.swift */,
+				FB2ABC971BCBDC8300F681C5 /* Info.plist */,
+			);
+			path = PachinkoTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FB2ABC831BCBDC8300F681C5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB2ABC8A1BCBDC8300F681C5 /* Pachinko.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FB2ABC851BCBDC8300F681C5 /* Pachinko */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB2ABC9A1BCBDC8300F681C5 /* Build configuration list for PBXNativeTarget "Pachinko" */;
+			buildPhases = (
+				FB2ABC811BCBDC8300F681C5 /* Sources */,
+				FB2ABC821BCBDC8300F681C5 /* Frameworks */,
+				FB2ABC831BCBDC8300F681C5 /* Headers */,
+				FB2ABC841BCBDC8300F681C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pachinko;
+			productName = Pachinko;
+			productReference = FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FB2ABC8F1BCBDC8300F681C5 /* PachinkoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB2ABC9D1BCBDC8300F681C5 /* Build configuration list for PBXNativeTarget "PachinkoTests" */;
+			buildPhases = (
+				FB2ABC8C1BCBDC8300F681C5 /* Sources */,
+				FB2ABC8D1BCBDC8300F681C5 /* Frameworks */,
+				FB2ABC8E1BCBDC8300F681C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB2ABC931BCBDC8300F681C5 /* PBXTargetDependency */,
+			);
+			name = PachinkoTests;
+			productName = PachinkoTests;
+			productReference = FB2ABC901BCBDC8300F681C5 /* PachinkoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB2ABC7D1BCBDC8300F681C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = cloudofpoints;
+				TargetAttributes = {
+					FB2ABC851BCBDC8300F681C5 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					FB2ABC8F1BCBDC8300F681C5 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = FB2ABC801BCBDC8300F681C5 /* Build configuration list for PBXProject "Pachinko" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FB2ABC7C1BCBDC8300F681C5;
+			productRefGroup = FB2ABC871BCBDC8300F681C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB2ABC851BCBDC8300F681C5 /* Pachinko */,
+				FB2ABC8F1BCBDC8300F681C5 /* PachinkoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB2ABC841BCBDC8300F681C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB2ABC8E1BCBDC8300F681C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB2ABC811BCBDC8300F681C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB2ABCB41BCC0D9C00F681C5 /* FeatureContext.swift in Sources */,
+				FB2ABCB61BCC0DDE00F681C5 /* FeatureSource.swift in Sources */,
+				FB2ABCAE1BCBDEBA00F681C5 /* Feature.swift in Sources */,
+				FB2ABCB81BCC0E0F00F681C5 /* Togglable.swift in Sources */,
+				FB2ABCAA1BCBDE2500F681C5 /* FeatureStatus.swift in Sources */,
+				FB2ABCBA1BCC0E9200F681C5 /* BaseFeature.swift in Sources */,
+				FB2ABCB21BCBDF3100F681C5 /* ConditionalFeature.swift in Sources */,
+				FB2ABCBC1BCC0EC900F681C5 /* ToggleCondition.swift in Sources */,
+				FB2ABCB01BCBDF1300F681C5 /* FeaturePredicate.swift in Sources */,
+				FB2ABCAC1BCBDE8600F681C5 /* FeatureSignature.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB2ABC8C1BCBDC8300F681C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB2ABC961BCBDC8300F681C5 /* PachinkoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FB2ABC931BCBDC8300F681C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB2ABC851BCBDC8300F681C5 /* Pachinko */;
+			targetProxy = FB2ABC921BCBDC8300F681C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FB2ABC981BCBDC8300F681C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FB2ABC991BCBDC8300F681C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FB2ABC9B1BCBDC8300F681C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Pachinko/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cloudofpoints.Pachinko;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FB2ABC9C1BCBDC8300F681C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Pachinko/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cloudofpoints.Pachinko;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		FB2ABC9E1BCBDC8300F681C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PachinkoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cloudofpoints.PachinkoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FB2ABC9F1BCBDC8300F681C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PachinkoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cloudofpoints.PachinkoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB2ABC801BCBDC8300F681C5 /* Build configuration list for PBXProject "Pachinko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB2ABC981BCBDC8300F681C5 /* Debug */,
+				FB2ABC991BCBDC8300F681C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB2ABC9A1BCBDC8300F681C5 /* Build configuration list for PBXNativeTarget "Pachinko" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB2ABC9B1BCBDC8300F681C5 /* Debug */,
+				FB2ABC9C1BCBDC8300F681C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB2ABC9D1BCBDC8300F681C5 /* Build configuration list for PBXNativeTarget "PachinkoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB2ABC9E1BCBDC8300F681C5 /* Debug */,
+				FB2ABC9F1BCBDC8300F681C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB2ABC7D1BCBDC8300F681C5 /* Project object */;
+}
