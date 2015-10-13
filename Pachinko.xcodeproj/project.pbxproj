@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB25E6E51BCD16A900EE70C5 /* FeatureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB25E6E41BCD16A900EE70C5 /* FeatureToggle.swift */; settings = {ASSET_TAGS = (); }; };
 		FB2ABC8A1BCBDC8300F681C5 /* Pachinko.h in Headers */ = {isa = PBXBuildFile; fileRef = FB2ABC891BCBDC8300F681C5 /* Pachinko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB2ABC911BCBDC8300F681C5 /* Pachinko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */; settings = {ASSET_TAGS = (); }; };
 		FB2ABC961BCBDC8300F681C5 /* PachinkoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2ABC951BCBDC8300F681C5 /* PachinkoTests.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB25E6E41BCD16A900EE70C5 /* FeatureToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureToggle.swift; sourceTree = "<group>"; };
 		FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pachinko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2ABC891BCBDC8300F681C5 /* Pachinko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pachinko.h; sourceTree = "<group>"; };
 		FB2ABC8B1BCBDC8300F681C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				FB2ABCB71BCC0E0F00F681C5 /* Togglable.swift */,
 				FB2ABCB91BCC0E9200F681C5 /* BaseFeature.swift */,
 				FB2ABCBB1BCC0EC900F681C5 /* ToggleCondition.swift */,
+				FB25E6E41BCD16A900EE70C5 /* FeatureToggle.swift */,
 			);
 			path = Pachinko;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			files = (
 				FB2ABCB41BCC0D9C00F681C5 /* FeatureContext.swift in Sources */,
 				FB2ABCB61BCC0DDE00F681C5 /* FeatureSource.swift in Sources */,
+				FB25E6E51BCD16A900EE70C5 /* FeatureToggle.swift in Sources */,
 				FB2ABCAE1BCBDEBA00F681C5 /* Feature.swift in Sources */,
 				FB2ABCB81BCC0E0F00F681C5 /* Togglable.swift in Sources */,
 				FB2ABCAA1BCBDE2500F681C5 /* FeatureStatus.swift in Sources */,

@@ -9,19 +9,22 @@
 import Foundation
 
 public protocol Togglable {
+    var context: FeatureContext {get}
+    var signature: FeatureSignature {get}
     var featureSource: FeatureSource {get}
-    func featurePredicates(context: FeatureContext, signature: FeatureSignature) -> [FeaturePredicate]?
-    
+    func featurePredicates() -> [FeaturePredicate]?
+    mutating func bindFeaturePredicates(predicates: [FeaturePredicate]) -> ()
 }
 
-extension Togglable {
-    
-    func executeFeature(context: FeatureContext, signature: FeatureSignature) -> Bool {
+public extension Togglable {
+        
+    func executeFeature() -> Bool {
+        
         guard let activeFeature = featureSource.activeFeature(context, signature: signature) else {
             return false
         }
         
-        let activeFeaturePredicates = featurePredicates(context, signature: signature)
+        let activeFeaturePredicates = featurePredicates()
         return activeFeature.isRunnable(activeFeaturePredicates)
     }
 }

@@ -12,7 +12,7 @@ public protocol ConditionalFeature : Feature {
     func isRunnable(conditions: [FeaturePredicate]?) -> Bool
 }
 
-extension ConditionalFeature {
+public extension ConditionalFeature {
     
     public func isActive() -> Bool {
         return status == FeatureStatus.Active
