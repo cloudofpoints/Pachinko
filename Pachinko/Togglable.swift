@@ -18,13 +18,13 @@ public protocol Togglable {
 
 public extension Togglable {
         
-    func executeFeature() -> Bool {
+    func shouldExecuteFeature() -> Bool {
         
         guard let activeFeature = featureSource.activeFeature(context, signature: signature) else {
             return false
         }
         
         let activeFeaturePredicates = featurePredicates()
-        return activeFeature.isRunnable(activeFeaturePredicates)
+        return activeFeature.shouldExecute(activeFeaturePredicates)
     }
 }

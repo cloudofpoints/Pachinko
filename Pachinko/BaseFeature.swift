@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct SimpleFeature : ConditionalFeature {
+public class BaseFeature : ConditionalFeature {
     public let signature: FeatureSignature
     public var status = FeatureStatus.Initialised
     

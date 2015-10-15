@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol ConditionalFeature : Feature {
-    func isRunnable(conditions: [FeaturePredicate]?) -> Bool
+    func shouldExecute(conditions: [FeaturePredicate]?) -> Bool
 }
 
 public extension ConditionalFeature {
@@ -18,7 +18,7 @@ public extension ConditionalFeature {
         return status == FeatureStatus.Active
     }
     
-    public func isRunnable(conditions: [FeaturePredicate]?) -> Bool {
+    public func shouldExecute(conditions: [FeaturePredicate]?) -> Bool {
         
         guard let predicates = conditions else {
             return isActive()
