@@ -22,7 +22,7 @@
 
 ## Requirements
 
-`Pachinko` is provided as a dynamic framework which you embed in your app project. Embedded frameworks are supported only from iOS8 and OSX 10.9 Mavericks onwards.
+`Pachinko` is provided as a Swift 2.0 dynamic framework which you embed in your app project. Embedded frameworks are supported only from iOS8 onwards.
 
 - iOS 8.0+ | Mac OSX 10.9+
 - Xcode 7.0+
