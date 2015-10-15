@@ -75,7 +75,7 @@ let myNewUserLoginToggle = FeatureToggle(context: myLoginContext,
 
 ```swift
 myNewUserLoginToggle.bindFeaturePredicates([ToggleCondition<UserProfile>(sampleUserProfile)
-            {userProfile in userProfile.isNewUser() && userProfile.location == 'EU'}
+            {userProfile in userProfile.isNewUser() && userProfile.location == UserLocation.EU}
 ])
 ```
 
