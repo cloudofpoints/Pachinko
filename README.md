@@ -46,7 +46,8 @@ Stay tuned - CocoaPods support to follow soon :flushed:
 - Optionally define a `FeatureContext` to group your feature toggles together for easier lifecycle management and general admin :
 
 ```swift
-let myLoginContext = FeatureContext(name: "UserLogin", synopsis: "Features related to user login")
+let myLoginContext = FeatureContext(name: "UserLogin", 
+									synopsis: "Features related to user login")
 ```
 - Instantiate a unique `FeatureSignature` for each `Feature`. This signature will act as the link between the `Feature` and the matching `FeatureToggle`. `FeatureSignature` conforms to the Swift `Hashable` protocol
 
