@@ -10,10 +10,14 @@ import Foundation
 
 public class BaseFeature : ConditionalFeature {
     public let signature: FeatureSignature
-    public var status = FeatureStatus.Initialised
+    public var status: FeatureStatus
     
     public init(signature: FeatureSignature, status: FeatureStatus){
         self.signature = signature
         self.status = status
+    }
+    
+    public convenience init(signature: FeatureSignature){
+        self.init(signature: signature, status: FeatureStatus.Initialised)
     }
 }

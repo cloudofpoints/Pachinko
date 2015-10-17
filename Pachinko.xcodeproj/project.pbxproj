@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D440604C1BD2864A00AE6A87 /* ToggleConditionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D440604B1BD2864A00AE6A87 /* ToggleConditionTests.swift */; settings = {ASSET_TAGS = (); }; };
+		D440604E1BD2868100AE6A87 /* StubUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D440604D1BD2868100AE6A87 /* StubUserProfile.swift */; settings = {ASSET_TAGS = (); }; };
+		D44060501BD28C6A00AE6A87 /* ConditionalFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D440604F1BD28C6A00AE6A87 /* ConditionalFeatureTests.swift */; settings = {ASSET_TAGS = (); }; };
 		FB25E6E51BCD16A900EE70C5 /* FeatureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB25E6E41BCD16A900EE70C5 /* FeatureToggle.swift */; settings = {ASSET_TAGS = (); }; };
 		FB2ABC8A1BCBDC8300F681C5 /* Pachinko.h in Headers */ = {isa = PBXBuildFile; fileRef = FB2ABC891BCBDC8300F681C5 /* Pachinko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB2ABC911BCBDC8300F681C5 /* Pachinko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */; settings = {ASSET_TAGS = (); }; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D440604B1BD2864A00AE6A87 /* ToggleConditionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleConditionTests.swift; sourceTree = "<group>"; };
+		D440604D1BD2868100AE6A87 /* StubUserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubUserProfile.swift; sourceTree = "<group>"; };
+		D440604F1BD28C6A00AE6A87 /* ConditionalFeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionalFeatureTests.swift; sourceTree = "<group>"; };
 		FB25E6E41BCD16A900EE70C5 /* FeatureToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureToggle.swift; sourceTree = "<group>"; };
 		FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pachinko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2ABC891BCBDC8300F681C5 /* Pachinko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pachinko.h; sourceTree = "<group>"; };
@@ -118,6 +124,9 @@
 				FB2ABC951BCBDC8300F681C5 /* FeatureSourceTests.swift */,
 				FB2ABC971BCBDC8300F681C5 /* Info.plist */,
 				FB62D3D91BCFFDC10015A8C9 /* StubFeatureSource.swift */,
+				D440604B1BD2864A00AE6A87 /* ToggleConditionTests.swift */,
+				D440604D1BD2868100AE6A87 /* StubUserProfile.swift */,
+				D440604F1BD28C6A00AE6A87 /* ConditionalFeatureTests.swift */,
 			);
 			path = PachinkoTests;
 			sourceTree = "<group>";
@@ -248,7 +257,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D44060501BD28C6A00AE6A87 /* ConditionalFeatureTests.swift in Sources */,
+				D440604E1BD2868100AE6A87 /* StubUserProfile.swift in Sources */,
 				FB2ABC961BCBDC8300F681C5 /* FeatureSourceTests.swift in Sources */,
+				D440604C1BD2864A00AE6A87 /* ToggleConditionTests.swift in Sources */,
 				FB62D3DA1BCFFDC10015A8C9 /* StubFeatureSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +297,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -333,6 +346,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
