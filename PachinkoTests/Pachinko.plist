@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PachinkoFeatures</key>
+	<array>
+		<dict>
+			<key>FeatureContextFeatures</key>
+			<array>
+				<dict>
+					<key>FeatureStatus</key>
+					<string>Active</string>
+					<key>FeatureSynopsis</key>
+					<string>A fourth sample feature</string>
+					<key>FeatureName</key>
+					<string>SampleFeature4</string>
+					<key>FeatureId</key>
+					<string>004</string>
+				</dict>
+			</array>
+			<key>FeatureContextSynopsis</key>
+			<string>A second sample feature context</string>
+			<key>FeatureContextName</key>
+			<string>SecondSampleFeatureContext</string>
+		</dict>
+		<dict>
+			<key>FeatureContextFeatures</key>
+			<array>
+				<dict>
+					<key>FeatureStatus</key>
+					<string>Active</string>
+					<key>FeatureSynopsis</key>
+					<string>A third sample feature</string>
+					<key>FeatureName</key>
+					<string>SampleFeature3</string>
+					<key>FeatureId</key>
+					<string>003</string>
+				</dict>
+				<dict>
+					<key>FeatureSynopsis</key>
+					<string>A second sample feature</string>
+					<key>FeatureName</key>
+					<string>SampleFeature2</string>
+					<key>FeatureId</key>
+					<string>002</string>
+					<key>FeatureStatus</key>
+					<string>Inactive</string>
+				</dict>
+				<dict>
+					<key>FeatureStatus</key>
+					<string>Active</string>
+					<key>FeatureSynopsis</key>
+					<string>A first sample feature</string>
+					<key>FeatureName</key>
+					<string>SampleFeature1</string>
+					<key>FeatureId</key>
+					<string>001</string>
+				</dict>
+			</array>
+			<key>FeatureContextSynopsis</key>
+			<string>A sample feature context</string>
+			<key>FeatureContextName</key>
+			<string>SampleFeatureContext</string>
+		</dict>
+	</array>
+</dict>
+</plist>
