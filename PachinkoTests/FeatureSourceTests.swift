@@ -20,6 +20,11 @@ class FeatureSourceTests: XCTestCase {
     let testFeatureFixtureStatusActive = "Active"
     let testFeatureFixtureStatusInctive = "Inactive"
     let testFeatureFixtureStatusInitialised = "Initialised"
+    let plistContextFixtureName = "SampleFeatureContext"
+    let plistContextFixtureSynopsis = "A sample feature context"
+    let plistFeatureFixtureId = "003"
+    let plistFeatureFixtureName = "SampleFeature3"
+    let plistFeatureFixtureSynopsis = "A third sample feature"
     
     override func setUp() {
         super.setUp()
@@ -115,9 +120,13 @@ class FeatureSourceTests: XCTestCase {
     }
     
     func testBindFeaturesFromPlistTestTargetBundle() {
+        var plistFeatureSource: FeatureSource = DynamicCacheingFeatureSource()
         let testBundle = NSBundle(forClass: FeatureSourceTests.self)
-        let featuresDict = testFeatureSource.bindFeaturesFromPList(featureBundle: testBundle)
-        XCTAssertNotNil(featuresDict, "Features dictionary should not be nil")
-        XCTAssertTrue(featuresDict?.keys.count == 2)
+        plistFeatureSource.bindFeaturesFromPList(featureBundle: testBundle)
+        let plistContext = FeatureContext(name: plistContextFixtureName, synopsis: plistContextFixtureSynopsis)
+        let plistFeatureSignature = FeatureSignature(id: plistFeatureFixtureId, name: plistFeatureFixtureName, synopsis: plistFeatureFixtureSynopsis)
+        let feature = plistFeatureSource.activeFeature(plistContext, signature: plistFeatureSignature)
+        XCTAssertNotNil(feature, "Active feature retrieved from PLIST should not be nil")
+        XCTAssertEqual(feature?.signature, plistFeatureSignature)
     }
 }
