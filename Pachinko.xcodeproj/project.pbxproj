@@ -15,6 +15,8 @@
 		D4BA03A01BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */; settings = {ASSET_TAGS = (); }; };
 		D4BA03A21BDD71FC00AFB4D3 /* PListFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA03A11BDD71FC00AFB4D3 /* PListFeatureSource.swift */; settings = {ASSET_TAGS = (); }; };
 		D4BA03A41BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */; settings = {ASSET_TAGS = (); }; };
+		D4F547611BE6C40500E6684C /* PListFeatureSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F547601BE6C40500E6684C /* PListFeatureSourceTests.swift */; settings = {ASSET_TAGS = (); }; };
+		D4F547631BE6CDBE00E6684C /* PListFeatureReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F547621BE6CDBE00E6684C /* PListFeatureReader.swift */; settings = {ASSET_TAGS = (); }; };
 		FB25E6E51BCD16A900EE70C5 /* FeatureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB25E6E41BCD16A900EE70C5 /* FeatureToggle.swift */; settings = {ASSET_TAGS = (); }; };
 		FB2ABC8A1BCBDC8300F681C5 /* Pachinko.h in Headers */ = {isa = PBXBuildFile; fileRef = FB2ABC891BCBDC8300F681C5 /* Pachinko.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB2ABC911BCBDC8300F681C5 /* Pachinko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */; settings = {ASSET_TAGS = (); }; };
@@ -51,6 +53,8 @@
 		D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCacheingFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA03A11BDD71FC00AFB4D3 /* PListFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsBackedFeatureSource.swift; sourceTree = "<group>"; };
+		D4F547601BE6C40500E6684C /* PListFeatureSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListFeatureSourceTests.swift; sourceTree = "<group>"; };
+		D4F547621BE6CDBE00E6684C /* PListFeatureReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListFeatureReader.swift; sourceTree = "<group>"; };
 		FB25E6E41BCD16A900EE70C5 /* FeatureToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureToggle.swift; sourceTree = "<group>"; };
 		FB2ABC861BCBDC8300F681C5 /* Pachinko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pachinko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2ABC891BCBDC8300F681C5 /* Pachinko.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pachinko.h; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */,
 				D4BA03A11BDD71FC00AFB4D3 /* PListFeatureSource.swift */,
 				D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */,
+				D4F547621BE6CDBE00E6684C /* PListFeatureReader.swift */,
 			);
 			path = Pachinko;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 				D440604D1BD2868100AE6A87 /* StubUserProfile.swift */,
 				D440604F1BD28C6A00AE6A87 /* ConditionalFeatureTests.swift */,
 				D44060521BD3E72700AE6A87 /* Pachinko.plist */,
+				D4F547601BE6C40500E6684C /* PListFeatureSourceTests.swift */,
 			);
 			path = PachinkoTests;
 			sourceTree = "<group>";
@@ -269,6 +275,7 @@
 				D4BA03A41BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift in Sources */,
 				D44060551BD4457500AE6A87 /* FeaturePlistKey.swift in Sources */,
 				FB2ABCB01BCBDF1300F681C5 /* FeaturePredicate.swift in Sources */,
+				D4F547631BE6CDBE00E6684C /* PListFeatureReader.swift in Sources */,
 				FB2ABCAC1BCBDE8600F681C5 /* FeatureSignature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +288,7 @@
 				D440604E1BD2868100AE6A87 /* StubUserProfile.swift in Sources */,
 				FB2ABC961BCBDC8300F681C5 /* FeatureSourceTests.swift in Sources */,
 				D440604C1BD2864A00AE6A87 /* ToggleConditionTests.swift in Sources */,
+				D4F547611BE6C40500E6684C /* PListFeatureSourceTests.swift in Sources */,
 				FB62D3DA1BCFFDC10015A8C9 /* StubFeatureSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

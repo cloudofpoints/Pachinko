@@ -9,54 +9,66 @@
 import Foundation
 
 public protocol PListFeatureSource {
-    mutating func bindFeaturesFromPList(pListName: String, featureBundle: NSBundle) -> ()
+    var featureReader: PListFeatureReader? {get set}
+    func featuresFromPList(pListName: String, featureBundle: NSBundle) -> [FeatureContext: [ConditionalFeature]]?
 }
 
 public extension PListFeatureSource {
     
-    public mutating func bindFeaturesFromPList(pListName: String = "Pachinko", featureBundle: NSBundle = NSBundle.mainBundle()) -> () {
-        
-        guard let plistPath = featureBundle.pathForResource(pListName, ofType: "plist") else {
-            print("Unable to locate \(pListName).plist in bundle \(featureBundle.description)")
-            return
-        }
-        
-        guard let contexts = NSDictionary(contentsOfFile: plistPath)?.objectForKey(FeaturePlistKey.PACHINKO_FEATURES.rawValue) as? [[String:AnyObject]] else {
-            return
-        }
+    public func featuresFromPList(pListName: String = "Pachinko", featureBundle: NSBundle = NSBundle.mainBundle()) -> [FeatureContext:[ConditionalFeature]]? {
         
         var contextFeatures: [FeatureContext: [ConditionalFeature]] = [:]
-        for contextDict: Dictionary in contexts {
+        
+        do {
             
-            guard let featureContext = featureContextFromPlistItem(contextDict) else {
-                continue
+            guard let featuresDict = try featureReader?.featuresFromPList(pListName, featureBundle: featureBundle) else {
+                return .None
             }
             
-            guard let features = contextDict[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [[String:String]] else {
-                continue
+            guard let contexts = featuresDict[FeaturePlistKey.PACHINKO_FEATURES.rawValue] as? [[String:AnyObject]] else {
+                return .None
             }
             
-            for featureDict: [String:String] in features {
+            for contextDict: Dictionary in contexts {
                 
-                guard let feature = featureFromPlistItem(featureDict) else {
+                guard let featureContext = featureContextFromPlistItem(contextDict) else {
                     continue
                 }
                 
-                if !contextFeatures.keys.contains(featureContext){
-                    contextFeatures[featureContext] = [ConditionalFeature]()
+                guard let features = contextDict[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [[String:String]] else {
+                    continue
                 }
-                contextFeatures[featureContext]?.append(feature)
+                
+                for featureDict: [String:String] in features {
+                    
+                    guard let feature = featureFromPlistItem(featureDict) else {
+                        continue
+                    }
+                    
+                    if !contextFeatures.keys.contains(featureContext){
+                        contextFeatures[featureContext] = [ConditionalFeature]()
+                    }
+                    contextFeatures[featureContext]?.append(feature)
+                }
             }
             
+        } catch PListFeatureReaderError.InvalidPListName(let detail) {
+            print("Unable to source features due to error : \(detail)")
+            return .None
+        } catch {
+            print("Caught unhandled error : \(error)")
+            return .None
         }
+        
+        return contextFeatures
     }
     
     func featureContextFromPlistItem(entry: [String:AnyObject]) -> FeatureContext? {
         guard let name: String = entry[FeaturePlistKey.CONTEXT_NAME.rawValue] as? String else {
-            return nil
+            return .None
         }
         guard let synopsis: String = entry[FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue] as? String else {
-            return nil
+            return .None
         }
         return FeatureContext(name: name, synopsis: synopsis)
     }
@@ -68,13 +80,13 @@ public extension PListFeatureSource {
             featureStatusStr = featureDict[FeaturePlistKey.FEATURE_STATUS.rawValue] {
                 
                 guard let featureStatus = FeatureStatus(rawValue: featureStatusStr) else {
-                    return nil
+                    return .None
                 }
                 
                 let signature = FeatureSignature(id: featureId, name: featureName, synopsis: featureSynopsis)
                 return BaseFeature(signature: signature, status: featureStatus)
         }
-        return nil
+        return .None
     }
     
     
