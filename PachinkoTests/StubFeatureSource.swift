@@ -36,8 +36,12 @@ public class StubFeatureSource : FeatureSource {
     
     public func activeFeature(context: FeatureContext, signature: FeatureSignature) -> ConditionalFeature? {
         guard let contextFeatures = self.featureCache[context] else {
-            return nil
+            return .None
         }
         return contextFeatures[signature]
+    }
+    
+    public func refresh() {
+        featureCache = populateFeatureCache()
     }
 }

@@ -10,9 +10,5 @@ import Foundation
 
 public protocol FeatureSource {
     func activeFeature(context: FeatureContext, signature: FeatureSignature) -> ConditionalFeature?
-}
-
-public extension FeatureSource {
-    
-
+    mutating func refresh() -> Void
 }

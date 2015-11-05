@@ -10,14 +10,18 @@ import Foundation
 
 public struct DefaultsBackedFeatureSource: FeatureSource, PListFeatureReader {
     
+    static let pachinkoPListName = "Pachinko"
+    static let pachinkoDefaultsDomain = "com.cloudofpoints.pachinko"
     var featureCache: [FeatureContext :[ConditionalFeature]]?
     
+    public init(pListName: String = DefaultsBackedFeatureSource.pachinkoPListName,
+                featureBundle: NSBundle = NSBundle.mainBundle()){
+        loadFeaturesFromPList(pListName, featureBundle: featureBundle)
+    }
+    
+    // MARK: - FeatureSource Protocol
     
     public func activeFeature(context: FeatureContext, signature: FeatureSignature) -> ConditionalFeature? {
-
-        if featureCache == nil {
-            populateDefaults()
-        }
         
         guard let features = featureCache?[context] else {
             return .None
@@ -26,34 +30,42 @@ public struct DefaultsBackedFeatureSource: FeatureSource, PListFeatureReader {
         return features.filter({$0.signature == signature}).last
     }
     
-    public func populateDefaults(pListName: String = "Pachinko",
-        featureBundle: NSBundle = NSBundle.mainBundle(),
-        domain: String = "com.cloudofpoints.pachinko") -> () {
+    public mutating func refresh() {
+        featureCache = featuresByContext()
+    }
+    
+    // MARK: - Read Features from PLIST
+    
+    public func loadFeaturesFromPList(pListName: String,
+        featureBundle: NSBundle = NSBundle.mainBundle()) -> Bool {
             
-            let pachinkoDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let pachinkoDefaults = NSUserDefaults.standardUserDefaults()
+        
+        do {
             
-            do {
-                
-                guard let featuresDict = try featuresFromPList(pListName, featureBundle: featureBundle) else {
-                    // Could be no features defined so just exit quietly
-                    return
-                }
-                
-                
-                pachinkoDefaults.setPersistentDomain(featuresDict, forName: domain)
-                
-            } catch PListFeatureReaderError.InvalidPListName(let detail) {
-                print("Failed to read features from PLIST : \(detail)")
-            } catch {
-                print("Caught unhandled error : \(error)")
+            guard let featuresDict = try featuresFromPList(pListName, featureBundle: featureBundle) else {
+                return false
             }
+            
+            pachinkoDefaults.setPersistentDomain(featuresDict, forName: DefaultsBackedFeatureSource.pachinkoDefaultsDomain)
+            
+        } catch PListFeatureReaderError.InvalidPListName(let detail) {
+            print("Failed to read features from PLIST : \(detail)")
+            return false
+        } catch {
+            print("Caught unhandled error : \(error)")
+            return false
+        }
+        return true
     }
     
     public func featuresByContext() -> [FeatureContext: [ConditionalFeature]]? {
         
-        let pachinkoDefaults = NSUserDefaults.standardUserDefaults()
+        guard let pachinkoDefaults = NSUserDefaults.standardUserDefaults().persistentDomainForName(DefaultsBackedFeatureSource.pachinkoDefaultsDomain) else {
+            return .None
+        }
         
-        guard let contexts = pachinkoDefaults.objectForKey(FeaturePlistKey.PACHINKO_FEATURES.rawValue) as? [[String:AnyObject]] else {
+        guard let contexts = pachinkoDefaults[FeaturePlistKey.PACHINKO_FEATURES.rawValue] as? [[String:AnyObject]] else {
             return .None
         }
         
@@ -84,7 +96,7 @@ public struct DefaultsBackedFeatureSource: FeatureSource, PListFeatureReader {
         return contextFeatures
     }
     
-    private func featureContextFromDefaultsItem(entry: [String:AnyObject]) -> FeatureContext? {
+    public func featureContextFromDefaultsItem(entry: [String:AnyObject]) -> FeatureContext? {
         guard let name: String = entry[FeaturePlistKey.CONTEXT_NAME.rawValue] as? String else {
             return .None
         }
@@ -94,7 +106,7 @@ public struct DefaultsBackedFeatureSource: FeatureSource, PListFeatureReader {
         return FeatureContext(name: name, synopsis: synopsis)
     }
     
-    private func featureFromDefaultsItem(featureDict: [String:String]) -> ConditionalFeature? {
+    public func featureFromDefaultsItem(featureDict: [String:String]) -> ConditionalFeature? {
         if let featureId = featureDict[FeaturePlistKey.FEATURE_ID.rawValue],
             featureName = featureDict[FeaturePlistKey.FEATURE_NAME.rawValue],
             featureSynopsis = featureDict[FeaturePlistKey.FEATURE_SYNOPSIS.rawValue],
