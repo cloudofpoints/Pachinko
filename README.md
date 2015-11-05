@@ -4,6 +4,7 @@
 ## Pachinko
 
 [![Twitter: @KauseFx](https://img.shields.io/badge/contact-@cloudofpoints-blue.svg?style=flat)](https://twitter.com/cloudofpoints)
+[![Build Status](https://travis-ci.org/cloudofpoints/Pachinko.svg)](https://travis-ci.org/cloudofpoints/Pachinko)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 `Pachinko` is a feature toggle library for iOS & OSX that aims to keep the technical debt associated with feature switching to a minimum whilst leaving you plenty of flexibility. 
