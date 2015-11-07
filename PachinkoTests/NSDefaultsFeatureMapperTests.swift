@@ -1,5 +1,5 @@
 //
-//  DefaultsBackedFeatureSourceTests.swift
+//  NSDefaultsFeatureMapperTests.swift
 //  Pachinko
 //
 //  Created by Tim Antrobus on 04/11/2015.
@@ -9,9 +9,12 @@
 import XCTest
 @testable import Pachinko
 
-class DefaultsBackedFeatureSourceTests: XCTestCase {
+struct TestDefaultsFeatureMapper: NSDefaultsFeatureMapper {}
+
+class NSDefaultsFeatureMapperTests: XCTestCase {
     
-    var testFeatureSource: DefaultsBackedFeatureSource = DefaultsBackedFeatureSource()
+    var testFeatureMapper: NSDefaultsFeatureMapper = TestDefaultsFeatureMapper()
+    let testDefaultsDomain = "com.cloudofpoints.pachinko-test"
     let testContextFixtureName = "TestContext"
     let testContextFixtureSynopsis = "Unit test context fixture"
     let testFeatureFixtureId = "001"
@@ -28,16 +31,36 @@ class DefaultsBackedFeatureSourceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        populateDefaultsTestFixture()
     }
     
     override func tearDown() {
         super.tearDown()
+        purgeDefaultsTestFixture()
+    }
+    
+    func populateDefaultsTestFixture() {
+    
+        let testFeatureBundle: NSBundle = NSBundle(forClass: NSDefaultsFeatureMapperTests.self)
+        guard let plistPath = testFeatureBundle.pathForResource("Pachinko", ofType: "plist") else {
+            return
+        }
+        
+        guard let features = NSDictionary(contentsOfFile: plistPath) as? [String : AnyObject] else {
+            return
+        }
+            
+        NSUserDefaults().setPersistentDomain(features, forName: testDefaultsDomain)
+    }
+    
+    func purgeDefaultsTestFixture() {
+        NSUserDefaults().removePersistentDomainForName(testDefaultsDomain)
     }
     
     func testFeatureContextFromDefaultsItem() {
         let stubDefaultsContext = [FeaturePlistKey.CONTEXT_NAME.rawValue : testContextFixtureName,
             FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue : testContextFixtureSynopsis]
-        let context: FeatureContext? = testFeatureSource.featureContextFromDefaultsItem(stubDefaultsContext)
+        let context: FeatureContext? = testFeatureMapper.featureContextFromDefaultsItem(stubDefaultsContext)
         XCTAssertNotNil(context, "FeatureContext should not be nil")
         XCTAssertEqual(context?.name, testContextFixtureName)
         XCTAssertEqual(context?.synopsis, testContextFixtureSynopsis)
@@ -46,19 +69,19 @@ class DefaultsBackedFeatureSourceTests: XCTestCase {
     func testFeatureContextFromDefaultsItemIncorrectKey() {
         let stubDefaultsContext = ["SomeRandomKey" : testContextFixtureName,
             FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue : testContextFixtureSynopsis]
-        let context: FeatureContext? = testFeatureSource.featureContextFromDefaultsItem(stubDefaultsContext)
+        let context: FeatureContext? = testFeatureMapper.featureContextFromDefaultsItem(stubDefaultsContext)
         XCTAssertNil(context, "An invalid key should result in a nil feature context")
     }
     
     func testFeatureContextFromDefaultsItemMissingKey() {
         let stubDefaultsContext = ["SomeRandomKey" : testContextFixtureName]
-        let context: FeatureContext? = testFeatureSource.featureContextFromDefaultsItem(stubDefaultsContext)
+        let context: FeatureContext? = testFeatureMapper.featureContextFromDefaultsItem(stubDefaultsContext)
         XCTAssertNil(context, "A missing key should result in a nil feature context")
     }
     
     func testFeatureContextFromDefaultsItemEmptyDictionary() {
         let stubDefaultsItem: [String:String] = [:]
-        let context: FeatureContext? = testFeatureSource.featureContextFromDefaultsItem(stubDefaultsItem)
+        let context: FeatureContext? = testFeatureMapper.featureContextFromDefaultsItem(stubDefaultsItem)
         XCTAssertNil(context, "An empty item dictionary should result in a nil feature context")
     }
     
@@ -69,7 +92,7 @@ class DefaultsBackedFeatureSourceTests: XCTestCase {
             FeaturePlistKey.FEATURE_STATUS.rawValue : testFeatureFixtureStatusActive]
         let expectedFeatureSignature = FeatureSignature(id: testFeatureFixtureId,
             name: testFeatureFixtureName, synopsis: testFeatureFixtureSynopsis)
-        let feature: ConditionalFeature? = testFeatureSource.featureFromDefaultsItem(stubDefaultsItem)
+        let feature: ConditionalFeature? = testFeatureMapper.featureFromDefaultsItem(stubDefaultsItem)
         XCTAssertNotNil(feature, "Feature should not be nil")
         XCTAssertEqual(feature?.signature, expectedFeatureSignature)
         XCTAssertEqual(feature?.status, FeatureStatus.Active)
@@ -80,7 +103,7 @@ class DefaultsBackedFeatureSourceTests: XCTestCase {
             FeaturePlistKey.FEATURE_NAME.rawValue : testFeatureFixtureName,
             "SomeRandomKey" : testFeatureFixtureSynopsis,
             FeaturePlistKey.FEATURE_STATUS.rawValue : testFeatureFixtureStatusActive]
-        let feature: ConditionalFeature? = testFeatureSource.featureFromDefaultsItem(stubDefaultsItem)
+        let feature: ConditionalFeature? = testFeatureMapper.featureFromDefaultsItem(stubDefaultsItem)
         XCTAssertNil(feature, "An invalid key should result in a nil feature")
     }
     
@@ -88,7 +111,7 @@ class DefaultsBackedFeatureSourceTests: XCTestCase {
         let stubDefaultsItem = [FeaturePlistKey.FEATURE_ID.rawValue : testFeatureFixtureId,
             FeaturePlistKey.FEATURE_NAME.rawValue : testFeatureFixtureName,
             FeaturePlistKey.FEATURE_STATUS.rawValue : testFeatureFixtureStatusActive]
-        let feature: ConditionalFeature? = testFeatureSource.featureFromDefaultsItem(stubDefaultsItem)
+        let feature: ConditionalFeature? = testFeatureMapper.featureFromDefaultsItem(stubDefaultsItem)
         XCTAssertNil(feature, "An missing key should result in a nil feature")
     }
     
@@ -97,21 +120,21 @@ class DefaultsBackedFeatureSourceTests: XCTestCase {
             FeaturePlistKey.FEATURE_NAME.rawValue : testFeatureFixtureName,
             FeaturePlistKey.FEATURE_SYNOPSIS.rawValue : testFeatureFixtureSynopsis,
             FeaturePlistKey.FEATURE_STATUS.rawValue : "Invalid"]
-        let feature: ConditionalFeature? = testFeatureSource.featureFromDefaultsItem(stubDefaultsItem)
+        let feature: ConditionalFeature? = testFeatureMapper.featureFromDefaultsItem(stubDefaultsItem)
         XCTAssertNil(feature, "An invalid status raw value should result in a nil feature")
     }
     
     func testFeaturesFromDefaultsTestTargetBundle() {
         let testBundle = NSBundle(forClass: FeatureSourceTests.self)
-        testFeatureSource = DefaultsBackedFeatureSource(featureBundle: testBundle)
-        testFeatureSource.refresh()
-        let features: [FeatureContext:[ConditionalFeature]]? = testFeatureSource.featuresByContext()
+        testFeatureMapper = DefaultsBackedFeatureSource(featureBundle: testBundle)
+        let features: [FeatureContext:[ConditionalFeature]]? = testFeatureMapper.featuresByContext(testDefaultsDomain)
         XCTAssertNotNil(features, "Features loaded from PLIST should not be nil")
-        let plistContext = FeatureContext(name: plistContextFixtureName, synopsis: plistContextFixtureSynopsis)
-        let plistFeatureSignature = FeatureSignature(id: plistFeatureFixtureId, name: plistFeatureFixtureName, synopsis: plistFeatureFixtureSynopsis)
-        let feature = testFeatureSource.activeFeature(plistContext, signature: plistFeatureSignature)
-        XCTAssertNotNil(feature, "Active feature retrieved from PLIST should not be nil")
-        XCTAssertEqual(feature?.signature, plistFeatureSignature)
+        let expectedContext = FeatureContext(name: plistContextFixtureName, synopsis: plistContextFixtureSynopsis)
+        let expectedFeatureSignature = FeatureSignature(id: plistFeatureFixtureId, name: plistFeatureFixtureName, synopsis: plistFeatureFixtureSynopsis)
+        let actualFeatures: [ConditionalFeature]? = features?[expectedContext]
+        XCTAssertNotNil(actualFeatures, "Features retrieved from defaults should contain expected context")
+        let actualFeature: ConditionalFeature? = actualFeatures?.first
+        XCTAssertEqual(expectedFeatureSignature, actualFeature?.signature)
     }
 
 }
