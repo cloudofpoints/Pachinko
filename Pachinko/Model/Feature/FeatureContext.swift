@@ -12,29 +12,30 @@ public func ==(lhs: FeatureContext, rhs: FeatureContext) -> Bool {
     return (lhs.name == rhs.name && lhs.synopsis == rhs.synopsis)
 }
 
-public struct FeatureContext : Hashable, PListTemplatable {
+public struct FeatureContext : Hashable {
     
     public let name: String
     public let synopsis: String
     public var hashValue: Int {
-        get {
-            return (31 &* self.name.hashValue) &+ self.synopsis.hashValue
-        }
+        return (31 &* name.hashValue) &+ synopsis.hashValue
     }
     
     public init(name: String, synopsis: String) {
         self.name = name
         self.synopsis = synopsis
     }
-    
+}
+
+extension FeatureContext: PListTemplatable {
+ 
     public init?(template: NSDictionary?) {
         guard let context = template else {
             return nil
         }
         if let name = context[FeaturePlistKey.CONTEXT_NAME.rawValue] as? String,
-                synopsis = context[FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue] as? String {
-            self.name = name
-            self.synopsis = synopsis
+            synopsis = context[FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue] as? String {
+                self.name = name
+                self.synopsis = synopsis
         } else {
             return nil
         }
@@ -42,7 +43,8 @@ public struct FeatureContext : Hashable, PListTemplatable {
     
     public func plistTemplate() -> NSDictionary {
         let template: [String:AnyObject] = [FeaturePlistKey.CONTEXT_NAME.rawValue:name,
-                                            FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue:synopsis]
+            FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue:synopsis]
         return template
     }
+    
 }

@@ -60,31 +60,35 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
     func testFeatureContextFromDefaultsItem() {
         let stubDefaultsContext = [FeaturePlistKey.CONTEXT_NAME.rawValue : testContextFixtureName,
             FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue : testContextFixtureSynopsis]
-        let context: FeatureContext? = testFeatureMapper.featureContextFromDefaultsItem(stubDefaultsContext)
-        XCTAssertNotNil(context, "FeatureContext should not be nil")
-        XCTAssertEqual(context?.name, testContextFixtureName)
-        XCTAssertEqual(context?.synopsis, testContextFixtureSynopsis)
+        let contexts: [FeatureContext] = testFeatureMapper.importModel([stubDefaultsContext])
+        XCTAssertNotNil(contexts, "FeatureContext array should not be nil")
+        XCTAssertTrue(contexts.count == 1, "FeatureContext array should have one element")
+        XCTAssertEqual(contexts[0].name, testContextFixtureName, "FeatureContext name should equal expected  value")
+        XCTAssertEqual(contexts[0].synopsis, testContextFixtureSynopsis, "FeatureContext synopsis should equal expected value")
     }
     
     func testFeatureContextFromDefaultsItemIncorrectKey() {
         let stubDefaultsContext = ["SomeRandomKey" : testContextFixtureName,
             FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue : testContextFixtureSynopsis]
-        let context: FeatureContext? = testFeatureMapper.featureContextFromDefaultsItem(stubDefaultsContext)
-        XCTAssertNil(context, "An invalid key should result in a nil feature context")
+        let contexts: [FeatureContext] = testFeatureMapper.importModel([stubDefaultsContext])
+        XCTAssertNotNil(contexts, "An invalid key should result in a non-nil array of FeatureContext")
+        XCTAssertTrue(contexts.isEmpty, "FeatureContext array should empty for invalid key")
     }
-    
+
     func testFeatureContextFromDefaultsItemMissingKey() {
         let stubDefaultsContext = ["SomeRandomKey" : testContextFixtureName]
-        let context: FeatureContext? = testFeatureMapper.featureContextFromDefaultsItem(stubDefaultsContext)
-        XCTAssertNil(context, "A missing key should result in a nil feature context")
+        let contexts: [FeatureContext] = testFeatureMapper.importModel([stubDefaultsContext])
+        XCTAssertNotNil(contexts, "A missing key should result in a non-nil array of FeatureContext")
+        XCTAssertTrue(contexts.isEmpty, "FeatureContext array should empty for a missing key")
     }
-    
+
     func testFeatureContextFromDefaultsItemEmptyDictionary() {
         let stubDefaultsItem: [String:String] = [:]
-        let context: FeatureContext? = testFeatureMapper.featureContextFromDefaultsItem(stubDefaultsItem)
-        XCTAssertNil(context, "An empty item dictionary should result in a nil feature context")
+        let contexts: [FeatureContext] = testFeatureMapper.importModel([stubDefaultsItem])
+        XCTAssertNotNil(contexts, "An empty dictionary should result in a non-nil array of FeatureContext")
+        XCTAssertTrue(contexts.isEmpty, "FeatureContext array should empty for an empty dictionary")
     }
-    
+
     func testFeatureFromDefaultsItem(){
         let stubDefaultsItem = [FeaturePlistKey.FEATURE_ID.rawValue : testFeatureFixtureId,
             FeaturePlistKey.FEATURE_NAME.rawValue : testFeatureFixtureName,
@@ -92,27 +96,30 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
             FeaturePlistKey.FEATURE_STATUS.rawValue : testFeatureFixtureStatusActive]
         let expectedFeatureSignature = FeatureSignature(id: testFeatureFixtureId,
             name: testFeatureFixtureName, synopsis: testFeatureFixtureSynopsis)
-        let feature: ConditionalFeature? = testFeatureMapper.featureFromDefaultsItem(stubDefaultsItem)
-        XCTAssertNotNil(feature, "Feature should not be nil")
-        XCTAssertEqual(feature?.signature, expectedFeatureSignature)
-        XCTAssertEqual(feature?.status, FeatureStatus.Active)
+        let features: [BaseFeature] = testFeatureMapper.importModel([stubDefaultsItem])
+        XCTAssertNotNil(features, "Features array should not be nil")
+        XCTAssertTrue(features.count == 1, "Features array should have one element")
+        XCTAssertEqual(features[0].signature, expectedFeatureSignature, "Feature signature should equal expected value")
+        XCTAssertEqual(features[0].status, FeatureStatus.Active, "Feature status should equal expected value")
     }
-    
+
     func testFeatureFromDefaultsItemIncorrectKey(){
         let stubDefaultsItem = [FeaturePlistKey.FEATURE_ID.rawValue : testFeatureFixtureId,
             FeaturePlistKey.FEATURE_NAME.rawValue : testFeatureFixtureName,
             "SomeRandomKey" : testFeatureFixtureSynopsis,
             FeaturePlistKey.FEATURE_STATUS.rawValue : testFeatureFixtureStatusActive]
-        let feature: ConditionalFeature? = testFeatureMapper.featureFromDefaultsItem(stubDefaultsItem)
-        XCTAssertNil(feature, "An invalid key should result in a nil feature")
+        let features: [BaseFeature] = testFeatureMapper.importModel([stubDefaultsItem])
+        XCTAssertNotNil(features, "An invalid key should result in a non-nil array of BaseFeature")
+        XCTAssertTrue(features.isEmpty, "BaseFeature array should be empty for an invalid key")
     }
-    
+
     func testFeatureFromDefaultsItemMissingKey(){
         let stubDefaultsItem = [FeaturePlistKey.FEATURE_ID.rawValue : testFeatureFixtureId,
             FeaturePlistKey.FEATURE_NAME.rawValue : testFeatureFixtureName,
             FeaturePlistKey.FEATURE_STATUS.rawValue : testFeatureFixtureStatusActive]
-        let feature: ConditionalFeature? = testFeatureMapper.featureFromDefaultsItem(stubDefaultsItem)
-        XCTAssertNil(feature, "An missing key should result in a nil feature")
+        let features: [BaseFeature] = testFeatureMapper.importModel([stubDefaultsItem])
+        XCTAssertNotNil(features, "An missing key should result in a non-nil array of BaseFeature")
+        XCTAssertTrue(features.isEmpty, "BaseFeature array should be empty for a missing key")
     }
     
     func testFeatureFromDefaultsItemIncorrectStatusRawValue(){
@@ -120,8 +127,10 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
             FeaturePlistKey.FEATURE_NAME.rawValue : testFeatureFixtureName,
             FeaturePlistKey.FEATURE_SYNOPSIS.rawValue : testFeatureFixtureSynopsis,
             FeaturePlistKey.FEATURE_STATUS.rawValue : "Invalid"]
-        let feature: ConditionalFeature? = testFeatureMapper.featureFromDefaultsItem(stubDefaultsItem)
-        XCTAssertNil(feature, "An invalid status raw value should result in a nil feature")
+        let features: [BaseFeature] = testFeatureMapper.importModel([stubDefaultsItem])
+        XCTAssertNotNil(features, "An invalid FeatureStatus value should result in a non-nil array of BaseFeature")
+        XCTAssertTrue(features.count == 1, "BaseFeature array should have one element")
+        XCTAssertEqual(features[0].status, FeatureStatus.Initialised, "An invalid FeatureStatus should default to Initialised")
     }
     
     func testFeaturesFromDefaultsTestTargetBundle() {

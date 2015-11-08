@@ -11,9 +11,9 @@ import Foundation
 public protocol NSDefaultsFeatureMapper {}
 
 public extension NSDefaultsFeatureMapper {
-    
+
     public func featuresByContext(domain: String) -> [FeatureContext: [ConditionalFeature]]? {
-        
+
         guard let pachinkoDefaults = NSUserDefaults().persistentDomainForName(domain) else {
             return .None
         }
@@ -22,57 +22,35 @@ public extension NSDefaultsFeatureMapper {
             return .None
         }
         
-        var contextFeatures: [FeatureContext: [ConditionalFeature]] = [:]
+        return importModels(contexts)
+    }
+    
+    public func importModel<T:PListTemplatable>(templates: [AnyObject]?) -> [T] {
         
-        for contextDict: [String:AnyObject] in contexts {
+        guard let modelTemplates = templates else {
+            return []
+        }
+        
+        return modelTemplates.map({$0 as? NSDictionary}).flatMap({T(template: $0)})
+    }
+
+    
+    public func importModels(templates: [AnyObject]?) -> [FeatureContext:[ConditionalFeature]] {
+        
+        var modelDict: [FeatureContext:[ConditionalFeature]] = [:]
+        
+        guard let modelTemplates = templates else {
+            return modelDict
+        }
+        for template: NSDictionary in modelTemplates.flatMap({$0 as? NSDictionary}) {
             
-            guard let featureContext = featureContextFromDefaultsItem(contextDict) else {
+            guard let modelKey = FeatureContext(template: template) else {
                 continue
             }
-            
-            guard let features = contextDict[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [[String:String]] else {
-                continue
-            }
-            
-            for featureDict: [String:String] in features {
-                
-                guard let feature = featureFromDefaultsItem(featureDict) else {
-                    continue
-                }
-                
-                if !contextFeatures.keys.contains(featureContext){
-                    contextFeatures[featureContext] = [ConditionalFeature]()
-                }
-                contextFeatures[featureContext]?.append(feature)
-            }
+            let contextFeaturesKey = FeaturePlistKey.CONTEXT_FEATURES.rawValue
+            let modelValues: [BaseFeature] = importModel(template[contextFeaturesKey] as? [AnyObject])
+            modelDict[modelKey] = modelValues.map({$0 as ConditionalFeature})
         }
-        return contextFeatures
+        return modelDict
     }
-    
-    public func featureContextFromDefaultsItem(entry: [String:AnyObject]) -> FeatureContext? {
-        guard let name: String = entry[FeaturePlistKey.CONTEXT_NAME.rawValue] as? String else {
-            return .None
-        }
-        guard let synopsis: String = entry[FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue] as? String else {
-            return .None
-        }
-        return FeatureContext(name: name, synopsis: synopsis)
-    }
-    
-    public func featureFromDefaultsItem(featureDict: [String:String]) -> ConditionalFeature? {
-        if let featureId = featureDict[FeaturePlistKey.FEATURE_ID.rawValue],
-            featureName = featureDict[FeaturePlistKey.FEATURE_NAME.rawValue],
-            featureSynopsis = featureDict[FeaturePlistKey.FEATURE_SYNOPSIS.rawValue],
-            featureStatusStr = featureDict[FeaturePlistKey.FEATURE_STATUS.rawValue] {
-                
-                guard let featureStatus = FeatureStatus(rawValue: featureStatusStr) else {
-                    return .None
-                }
-                
-                let signature = FeatureSignature(id: featureId, name: featureName, synopsis: featureSynopsis)
-                return BaseFeature(signature: signature, status: featureStatus)
-        }
-        return .None
-    }
-    
 }
