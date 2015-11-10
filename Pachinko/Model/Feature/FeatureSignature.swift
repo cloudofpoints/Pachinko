@@ -9,26 +9,31 @@
 import Foundation
 
 public func ==(lhs: FeatureSignature, rhs: FeatureSignature) -> Bool {
-    return (lhs.id == rhs.id && lhs.name == rhs.name && lhs.synopsis == rhs.synopsis)
+    return (lhs.id == rhs.id &&
+            lhs.versionId == rhs.versionId &&
+            lhs.name == rhs.name &&
+            lhs.synopsis == rhs.synopsis)
 }
 
 public struct FeatureSignature : Hashable {
     public let id: String
+    public let versionId: String
     public let name: String
     public let synopsis: String
     
     public var hashValue: Int {
-        return (31 &* id.hashValue) &+ name.hashValue &+ synopsis.hashValue
+        return (31 &* id.hashValue) &+ versionId.hashValue &+ name.hashValue &+ synopsis.hashValue
     }
     
-    public init(id: String, name: String, synopsis: String){
+    public init(id: String, versionId: String, name: String, synopsis: String){
         self.id = id
+        self.versionId = versionId
         self.name = name
         self.synopsis = synopsis
     }
     
     public static func emptySignature() -> FeatureSignature {
-        return FeatureSignature(id: "", name: "", synopsis: "")
+        return FeatureSignature(id: "", versionId: "", name: "", synopsis: "")
     }
 }
 
@@ -39,10 +44,12 @@ extension FeatureSignature: PListTemplatable {
             return nil
         }
         if let id = signature[FeaturePlistKey.FEATURE_ID.rawValue] as? String,
+            versionId = signature[FeaturePlistKey.FEATURE_VERSION_ID.rawValue] as? String,
             name = signature[FeaturePlistKey.FEATURE_NAME.rawValue] as? String,
             synopsis = signature[FeaturePlistKey.FEATURE_SYNOPSIS.rawValue] as? String {
                 
                 self.id = id
+                self.versionId = versionId
                 self.name = name
                 self.synopsis = synopsis
         } else {
@@ -52,6 +59,7 @@ extension FeatureSignature: PListTemplatable {
     
     public func plistTemplate() -> NSDictionary {
         let template: [String:AnyObject] = [FeaturePlistKey.FEATURE_ID.rawValue: id,
+            FeaturePlistKey.FEATURE_VERSION_ID.rawValue: versionId,
             FeaturePlistKey.FEATURE_NAME.rawValue: name,
             FeaturePlistKey.FEATURE_SYNOPSIS.rawValue: synopsis]
         return template

@@ -14,7 +14,7 @@ public extension NSDefaultsFeatureMapper {
 
     public func featuresByContext(domain: String) -> [FeatureContext: [ConditionalFeature]]? {
 
-        guard let pachinkoDefaults = NSUserDefaults().persistentDomainForName(domain) else {
+        guard let pachinkoDefaults = NSUserDefaults.standardUserDefaults().persistentDomainForName(domain) else {
             return .None
         }
         

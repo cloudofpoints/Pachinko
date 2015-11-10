@@ -11,4 +11,5 @@ import Foundation
 public protocol FeatureSource {
     func activeFeature(context: FeatureContext, signature: FeatureSignature) -> ConditionalFeature?
     mutating func refresh() -> Void
+    func activeVersion() -> String
 }

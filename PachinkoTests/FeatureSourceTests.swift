@@ -24,19 +24,19 @@ class FeatureSourceTests: XCTestCase {
     
     func testActiveFeatureHappyPath() {
         let existingContext = FeatureContext(name: "TestContext1", synopsis: "TestContext1 Features")
-        let existingFeatureSignature = FeatureSignature(id: "001", name: "LoginFeature", synopsis: "Test login feature")
+        let existingFeatureSignature = FeatureSignature(id: "001", versionId: "1.0.0", name: "LoginFeature", synopsis: "Test login feature")
         XCTAssertNotNil(testFeatureSource.activeFeature(existingContext, signature: existingFeatureSignature), "Existing feature \(existingFeatureSignature) should not be nil")
     }
     
     func testActiveFeatureInvalidFeature() {
         let existingContext = FeatureContext(name: "TestContext1", synopsis: "TestContext1 Features")
-        let invalidFeatureSignature = FeatureSignature(id: "999", name: "InvalidFeature", synopsis: "Invalid test feature")
+        let invalidFeatureSignature = FeatureSignature(id: "999", versionId: "1.0.0", name: "InvalidFeature", synopsis: "Invalid test feature")
         XCTAssertNil(testFeatureSource.activeFeature(existingContext, signature: invalidFeatureSignature), "Invalid feature \(invalidFeatureSignature) should be nil")
     }
     
     func testActiveFeatureInvalidContext() {
         let invalidContext = FeatureContext(name: "InvalidContext", synopsis: "InvalidContext Features")
-        let existingFeatureSignature = FeatureSignature(id: "001", name: "LoginFeature", synopsis: "Test login feature")
+        let existingFeatureSignature = FeatureSignature(id: "001", versionId: "1.0.0", name: "LoginFeature", synopsis: "Test login feature")
         XCTAssertNil(testFeatureSource.activeFeature(invalidContext, signature: existingFeatureSignature), "Existing feature should be nil for invalid context \(invalidContext)")
     }
     

@@ -14,6 +14,7 @@ public enum FeaturePlistKey: String {
     case CONTEXT_SYNOPSIS = "FeatureContextSynopsis"
     case CONTEXT_FEATURES = "FeatureContextFeatures"
     case FEATURE_ID = "FeatureId"
+    case FEATURE_VERSION_ID = "FeatureVersionId"
     case FEATURE_NAME = "FeatureName"
     case FEATURE_SYNOPSIS = "FeatureSynopsis"
     case FEATURE_STATUS = "FeatureStatus"

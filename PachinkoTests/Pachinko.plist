@@ -8,6 +8,8 @@
 			<key>FeatureContextFeatures</key>
 			<array>
 				<dict>
+					<key>FeatureVersionId</key>
+					<string>1.0.0</string>
 					<key>FeatureStatus</key>
 					<string>Active</string>
 					<key>FeatureSynopsis</key>
@@ -27,6 +29,8 @@
 			<key>FeatureContextFeatures</key>
 			<array>
 				<dict>
+					<key>FeatureVersionId</key>
+					<string>1.0.0</string>
 					<key>FeatureStatus</key>
 					<string>Active</string>
 					<key>FeatureSynopsis</key>
@@ -37,6 +41,8 @@
 					<string>003</string>
 				</dict>
 				<dict>
+					<key>FeatureVersionId</key>
+					<string>1.0.1</string>
 					<key>FeatureSynopsis</key>
 					<string>A second sample feature</string>
 					<key>FeatureName</key>
@@ -47,6 +53,8 @@
 					<string>Inactive</string>
 				</dict>
 				<dict>
+					<key>FeatureVersionId</key>
+					<string>1.0.0</string>
 					<key>FeatureStatus</key>
 					<string>Active</string>
 					<key>FeatureSynopsis</key>

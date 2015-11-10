@@ -13,6 +13,7 @@
 		D44060531BD3E72700AE6A87 /* Pachinko.plist in Resources */ = {isa = PBXBuildFile; fileRef = D44060521BD3E72700AE6A87 /* Pachinko.plist */; };
 		D44060551BD4457500AE6A87 /* FeaturePlistKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44060541BD4457400AE6A87 /* FeaturePlistKey.swift */; };
 		D47658431BEE89D300F78B0B /* PListTemplatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658421BEE89D300F78B0B /* PListTemplatable.swift */; };
+		D47658461BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */; };
 		D4BA03A01BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */; };
 		D4BA03A41BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */; };
 		D4F44F3D1BEAC16B00B94B0F /* NSDefaultsFeatureMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F44F3C1BEAC16B00B94B0F /* NSDefaultsFeatureMapperTests.swift */; };
@@ -54,6 +55,7 @@
 		D44060521BD3E72700AE6A87 /* Pachinko.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pachinko.plist; sourceTree = "<group>"; };
 		D44060541BD4457400AE6A87 /* FeaturePlistKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePlistKey.swift; sourceTree = "<group>"; };
 		D47658421BEE89D300F78B0B /* PListTemplatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListTemplatable.swift; sourceTree = "<group>"; };
+		D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeltaCapableFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCacheingFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsBackedFeatureSource.swift; sourceTree = "<group>"; };
 		D4F44F3C1BEAC16B00B94B0F /* NSDefaultsFeatureMapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDefaultsFeatureMapperTests.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */,
 				D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */,
 				FB2ABCB51BCC0DDE00F681C5 /* FeatureSource.swift */,
+				D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */,
 			);
 			path = FeatureSource;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				D4BA03A41BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift in Sources */,
 				D44060551BD4457500AE6A87 /* FeaturePlistKey.swift in Sources */,
 				FB2ABCB01BCBDF1300F681C5 /* FeaturePredicate.swift in Sources */,
+				D47658461BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift in Sources */,
 				D4F547631BE6CDBE00E6684C /* PListFeatureReader.swift in Sources */,
 				FB2ABCAC1BCBDE8600F681C5 /* FeatureSignature.swift in Sources */,
 			);

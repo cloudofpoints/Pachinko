@@ -39,7 +39,7 @@ public struct DefaultsBackedFeatureSource: FeatureSource, NSDefaultsFeatureMappe
     public func loadFeaturesFromPList(pListName: String,
         featureBundle: NSBundle = NSBundle.mainBundle()) -> Bool {
             
-        let pachinkoDefaults = NSUserDefaults()//.standardUserDefaults()
+        let pachinkoDefaults = NSUserDefaults.standardUserDefaults()
         
         do {
             
@@ -57,6 +57,13 @@ public struct DefaultsBackedFeatureSource: FeatureSource, NSDefaultsFeatureMappe
             return false
         }
         return true
+    }
+    
+    public func activeVersion() -> String {
+        // Move featureCache to be a Set<FeatureContext>
+        // Each FeatureContext to be composed with a list of ConditionalFeature
+        // Derive max activeVersion from each Context
+        return "1.0.0"
     }
 
 }

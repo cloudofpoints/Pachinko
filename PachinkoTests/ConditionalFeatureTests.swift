@@ -11,7 +11,7 @@ import XCTest
 
 class ConditionalFeatureTests: XCTestCase {
 
-    var testFeatureSignature = FeatureSignature(id: "001", name: "TestSignature", synopsis: "FeatureSignature test fixture")
+    var testFeatureSignature = FeatureSignature(id: "001", versionId: "1.0.0", name: "TestSignature", synopsis: "FeatureSignature test fixture")
 
     override func setUp() {
         super.setUp()

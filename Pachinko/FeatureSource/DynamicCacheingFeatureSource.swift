@@ -10,19 +10,29 @@ import Foundation
 
 public struct DynamicCacheingFeatureSource: FeatureSource {
 
-    var featureCache: FeatureSource?
+    var featureCache: FeatureSource
+    var remoteFeatureSource: FeatureSource?
     
-    public init(source: FeatureSource = DefaultsBackedFeatureSource()) {
+    public init(source: FeatureSource = DefaultsBackedFeatureSource(), remoteSource: FeatureSource) {
         featureCache = source
-        featureCache?.refresh()
+        remoteFeatureSource = remoteSource
+        featureCache.refresh()
     }
     
     public func activeFeature(context: FeatureContext, signature: FeatureSignature) -> ConditionalFeature? {
-        return featureCache?.activeFeature(context, signature: signature)
+        return featureCache.activeFeature(context, signature: signature)
     }
     
     public mutating func refresh() {
-        featureCache?.refresh()
+        featureCache.refresh()
+        // Check remote source for deltas
+        // Compare result set with current local state
+        // Apply updates to local state
+        // Reload cache from local state
+    }
+    
+    public func activeVersion() -> String {
+        return featureCache.activeVersion()
     }
         
 }
