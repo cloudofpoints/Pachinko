@@ -15,6 +15,7 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
     
     var testFeatureMapper: NSDefaultsFeatureMapper = TestDefaultsFeatureMapper()
     let testDefaultsDomain = "com.cloudofpoints.pachinko-test"
+    let testContextFixtureId = "com.cloudofpoints.pachinko.context.1"
     let testContextFixtureName = "TestContext"
     let testContextFixtureSynopsis = "Unit test context fixture"
     let testFeatureFixtureId = "001"
@@ -59,7 +60,8 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
     }
     
     func defaultsContextFixture() -> [String:String] {
-        return [FeaturePlistKey.CONTEXT_NAME.rawValue : testContextFixtureName,
+        return [FeaturePlistKey.CONTEXT_ID.rawValue : testContextFixtureId,
+            FeaturePlistKey.CONTEXT_NAME.rawValue : testContextFixtureName,
             FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue : testContextFixtureSynopsis]
     }
     
@@ -77,6 +79,7 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
         let contexts: [FeatureContext] = testFeatureMapper.importModel([stubDefaultsContext])
         XCTAssertNotNil(contexts, "FeatureContext array should not be nil")
         XCTAssertTrue(contexts.count == 1, "FeatureContext array should have one element")
+        XCTAssertEqual(contexts[0].id, testContextFixtureId, "FeatureContext ID should equal expected value")
         XCTAssertEqual(contexts[0].name, testContextFixtureName, "FeatureContext name should equal expected  value")
         XCTAssertEqual(contexts[0].synopsis, testContextFixtureSynopsis, "FeatureContext synopsis should equal expected value")
     }
@@ -148,14 +151,19 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
     func testFeaturesFromDefaultsTestTargetBundle() {
         let testBundle = NSBundle(forClass: FeatureSourceTests.self)
         testFeatureMapper = DefaultsBackedFeatureSource(featureBundle: testBundle)
-        let features: [FeatureContext:[ConditionalFeature]]? = testFeatureMapper.featuresByContext(testDefaultsDomain)
+        let features: [String:FeatureContext]? = testFeatureMapper.featureContexts(testDefaultsDomain)
         XCTAssertNotNil(features, "Features loaded from PLIST should not be nil")
-        let expectedContext = FeatureContext(name: plistContextFixtureName, synopsis: plistContextFixtureSynopsis)
+        let expectedContext = FeatureContext(id: "com.cloudofpoints.pachinko.context.1", name: plistContextFixtureName, synopsis: plistContextFixtureSynopsis)
         let expectedFeatureSignature = FeatureSignature(id: plistFeatureFixtureId, versionId: testFeatureFixtureVersionId, name: plistFeatureFixtureName, synopsis: plistFeatureFixtureSynopsis)
-        let actualFeatures: [ConditionalFeature]? = features?[expectedContext]
-        XCTAssertNotNil(actualFeatures, "Features retrieved from defaults should contain expected context")
-        let actualFeature: ConditionalFeature? = actualFeatures?.first
-        XCTAssertEqual(expectedFeatureSignature, actualFeature?.signature)
+        if let actualContext: FeatureContext = features?[expectedContext.id] {
+            let actualFeatures: [ConditionalFeature]? = actualContext.features
+            XCTAssertNotNil(actualFeatures, "Features retrieved from defaults should contain expected context")
+            let actualFeature: ConditionalFeature? = actualFeatures?.first
+            XCTAssertEqual(expectedFeatureSignature, actualFeature?.signature)
+        } else {
+            XCTFail()
+        }
+
     }
 
 }

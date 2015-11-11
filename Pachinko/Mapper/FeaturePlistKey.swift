@@ -10,6 +10,7 @@ import Foundation
 
 public enum FeaturePlistKey: String {
     case PACHINKO_FEATURES = "PachinkoFeatures"
+    case CONTEXT_ID = "FeatureContextId"
     case CONTEXT_NAME = "FeatureContextName"
     case CONTEXT_SYNOPSIS = "FeatureContextSynopsis"
     case CONTEXT_FEATURES = "FeatureContextFeatures"

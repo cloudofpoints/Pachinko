@@ -12,7 +12,7 @@ public struct DefaultsBackedFeatureSource: FeatureSource, NSDefaultsFeatureMappe
     
     static let pachinkoPListName = "Pachinko"
     static let pachinkoDefaultsDomain = "com.cloudofpoints.pachinko"
-    var featureCache: [FeatureContext :[ConditionalFeature]]?
+    var featureCache: [String : FeatureContext]?
     
     public init(pListName: String = DefaultsBackedFeatureSource.pachinkoPListName,
                 featureBundle: NSBundle = NSBundle.mainBundle()){
@@ -23,15 +23,19 @@ public struct DefaultsBackedFeatureSource: FeatureSource, NSDefaultsFeatureMappe
     
     public func activeFeature(context: FeatureContext, signature: FeatureSignature) -> ConditionalFeature? {
         
-        guard let features = featureCache?[context] else {
+        guard let matchedContext: FeatureContext = featureCache?[context.id] else {
             return .None
         }
         
-        return features.filter({$0.signature == signature}).last
+        guard let activeFeatures = matchedContext.features else {
+            return .None
+        }
+
+        return activeFeatures.filter({$0.signature == signature}).first
     }
     
     public mutating func refresh() {
-        featureCache = featuresByContext(DefaultsBackedFeatureSource.pachinkoDefaultsDomain)
+        featureCache = featureContexts(DefaultsBackedFeatureSource.pachinkoDefaultsDomain)
     }
     
     // MARK: - Read Features from PLIST
@@ -59,9 +63,10 @@ public struct DefaultsBackedFeatureSource: FeatureSource, NSDefaultsFeatureMappe
         return true
     }
     
+    // MARK: -
+    // TODO: -
+    
     public func activeVersion() -> String {
-        // Move featureCache to be a Set<FeatureContext>
-        // Each FeatureContext to be composed with a list of ConditionalFeature
         // Derive max activeVersion from each Context
         return "1.0.0"
     }

@@ -5,6 +5,8 @@
 	<key>PachinkoFeatures</key>
 	<array>
 		<dict>
+			<key>FeatureContextId</key>
+			<string>com.cloudofpoints.pachinko.context.2</string>
 			<key>FeatureContextFeatures</key>
 			<array>
 				<dict>
@@ -26,6 +28,8 @@
 			<string>SecondSampleFeatureContext</string>
 		</dict>
 		<dict>
+			<key>FeatureContextId</key>
+			<string>com.cloudofpoints.pachinko.context.1</string>
 			<key>FeatureContextFeatures</key>
 			<array>
 				<dict>

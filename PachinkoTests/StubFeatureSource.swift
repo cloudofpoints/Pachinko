@@ -11,8 +11,8 @@ import Foundation
 
 public class StubFeatureSource : FeatureSource {
     
-    let testContextOne = FeatureContext(name: "TestContext1", synopsis: "TestContext1 Features")
-    let testContextTwo = FeatureContext(name: "TestContext2", synopsis: "TestContext2 Features")
+    let testContextOne = FeatureContext(id: "com.cloudofpoints.pachinko.context1", name: "TestContext1", synopsis: "TestContext1 Features")
+    let testContextTwo = FeatureContext(id: "com.cloudofpoints.pachinko.context2", name: "TestContext2", synopsis: "TestContext2 Features")
     let loginFeatureSignature = FeatureSignature(id: "001", versionId: "1.0.0", name: "LoginFeature", synopsis: "Test login feature")
     let campaignFeatureSignature = FeatureSignature(id: "002", versionId: "1.0.0", name: "CampaignFeature", synopsis: "Test campaign feature")
     let buttonABTestSignature_A = FeatureSignature(id: "003", versionId: "1.0.0", name: "ButtonABTestFeature_A", synopsis: "Button A/B testing - A")

@@ -9,18 +9,21 @@
 import Foundation
 
 public func ==(lhs: FeatureContext, rhs: FeatureContext) -> Bool {
-    return (lhs.name == rhs.name && lhs.synopsis == rhs.synopsis)
+    return (lhs.id == rhs.id && lhs.name == rhs.name && lhs.synopsis == rhs.synopsis)
 }
 
 public struct FeatureContext : Hashable {
     
+    public let id: String
     public let name: String
     public let synopsis: String
+    public var features: [ConditionalFeature]?
     public var hashValue: Int {
-        return (31 &* name.hashValue) &+ synopsis.hashValue
+        return (31 &* id.hashValue) &+ name.hashValue &+ synopsis.hashValue
     }
     
-    public init(name: String, synopsis: String) {
+    public init(id: String, name: String, synopsis: String) {
+        self.id = id
         self.name = name
         self.synopsis = synopsis
     }
@@ -32,18 +35,36 @@ extension FeatureContext: PListTemplatable {
         guard let context = template else {
             return nil
         }
-        if let name = context[FeaturePlistKey.CONTEXT_NAME.rawValue] as? String,
+        if let id = context[FeaturePlistKey.CONTEXT_ID.rawValue] as? String,
+            name = context[FeaturePlistKey.CONTEXT_NAME.rawValue] as? String,
             synopsis = context[FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue] as? String {
+                self.id = id
                 self.name = name
                 self.synopsis = synopsis
+                
+                if let featureModels = context[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [ConditionalFeature] {
+                    self.features = featureModels
+                }
+                
         } else {
             return nil
         }
     }
     
     public func plistTemplate() -> NSDictionary {
-        let template: [String:AnyObject] = [FeaturePlistKey.CONTEXT_NAME.rawValue:name,
+    
+        var template: [String:AnyObject] = [FeaturePlistKey.CONTEXT_ID.rawValue:id,
+            FeaturePlistKey.CONTEXT_NAME.rawValue:name,
             FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue:synopsis]
+        
+        if let featureModels = features {
+            
+            let featureTemplates: [AnyObject] = featureModels.map({$0 as? PListTemplatable})
+                                                            .flatMap({$0?.plistTemplate()})
+            
+            template[FeaturePlistKey.CONTEXT_FEATURES.rawValue] = featureTemplates
+        }
+        
         return template
     }
     
