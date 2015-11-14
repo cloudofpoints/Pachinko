@@ -42,8 +42,11 @@ extension FeatureContext: PListTemplatable {
                 self.name = name
                 self.synopsis = synopsis
                 
-                if let featureModels = context[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [ConditionalFeature] {
-                    self.features = featureModels
+                if let featureTemplates = context[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [NSDictionary] {
+                    
+                    if let featureModels: [ConditionalFeature]? = featureTemplates.map({BaseFeature(template: $0)!}) {
+                        self.features = featureModels
+                    }
                 }
                 
         } else {

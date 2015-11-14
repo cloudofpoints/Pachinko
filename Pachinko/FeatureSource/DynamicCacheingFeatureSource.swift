@@ -25,10 +25,6 @@ public struct DynamicCacheingFeatureSource: FeatureSource {
     
     public mutating func refresh() {
         featureCache.refresh()
-        // Check remote source for deltas
-        // Compare result set with current local state
-        // Apply updates to local state
-        // Reload cache from local state
     }
     
     public func activeVersion() -> String {

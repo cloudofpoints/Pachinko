@@ -12,6 +12,7 @@
 		D44060501BD28C6A00AE6A87 /* ConditionalFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D440604F1BD28C6A00AE6A87 /* ConditionalFeatureTests.swift */; };
 		D44060531BD3E72700AE6A87 /* Pachinko.plist in Resources */ = {isa = PBXBuildFile; fileRef = D44060521BD3E72700AE6A87 /* Pachinko.plist */; };
 		D44060551BD4457500AE6A87 /* FeaturePlistKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44060541BD4457400AE6A87 /* FeaturePlistKey.swift */; };
+		D44B9EE11BF7A1A40065D058 /* FeatureContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B9EE01BF7A1A40065D058 /* FeatureContextTests.swift */; };
 		D47658431BEE89D300F78B0B /* PListTemplatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658421BEE89D300F78B0B /* PListTemplatable.swift */; };
 		D47658461BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */; };
 		D4BA03A01BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */; };
@@ -54,6 +55,7 @@
 		D440604F1BD28C6A00AE6A87 /* ConditionalFeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionalFeatureTests.swift; sourceTree = "<group>"; };
 		D44060521BD3E72700AE6A87 /* Pachinko.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pachinko.plist; sourceTree = "<group>"; };
 		D44060541BD4457400AE6A87 /* FeaturePlistKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePlistKey.swift; sourceTree = "<group>"; };
+		D44B9EE01BF7A1A40065D058 /* FeatureContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureContextTests.swift; sourceTree = "<group>"; };
 		D47658421BEE89D300F78B0B /* PListTemplatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListTemplatable.swift; sourceTree = "<group>"; };
 		D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeltaCapableFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCacheingFeatureSource.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				D4F44F3C1BEAC16B00B94B0F /* NSDefaultsFeatureMapperTests.swift */,
 				D4F44F3E1BEAC25000B94B0F /* PListFeatureReaderTests.swift */,
 				D4F44F401BEAC3B900B94B0F /* TestPListFeatureReader.swift */,
+				D44B9EE01BF7A1A40065D058 /* FeatureContextTests.swift */,
 			);
 			path = PachinkoTests;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				D440604E1BD2868100AE6A87 /* StubUserProfile.swift in Sources */,
 				FB2ABC961BCBDC8300F681C5 /* FeatureSourceTests.swift in Sources */,
 				D4F44F411BEAC3B900B94B0F /* TestPListFeatureReader.swift in Sources */,
+				D44B9EE11BF7A1A40065D058 /* FeatureContextTests.swift in Sources */,
 				D440604C1BD2864A00AE6A87 /* ToggleConditionTests.swift in Sources */,
 				D4F44F3F1BEAC25000B94B0F /* PListFeatureReaderTests.swift in Sources */,
 				FB62D3DA1BCFFDC10015A8C9 /* StubFeatureSource.swift in Sources */,
