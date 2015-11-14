@@ -35,7 +35,7 @@
 To integrate `Pachinko` into your Xcode project using Carthage, add the following to your local `Cartfile`:
 
 ```ogdl
-github "cloudofpoints/pachinko" ~> 1.0.0
+github "cloudofpoints/pachinko" ~> 1.0.1
 ```
 
 ### CocoaPods
@@ -52,13 +52,18 @@ let myLoginContext = FeatureContext(name: "UserLogin",
 ```
 - Instantiate a unique `FeatureSignature` for each `Feature`. This signature will act as the link between the `Feature` and the matching `FeatureToggle`. `FeatureSignature` conforms to the Swift `Hashable` protocol
 
+- Note that each `FeatureSignature` is versioned to make it easier to manage updates to deployed `Features`
+
 ```swift
 let myNewUserLoginSignature = FeatureSignature(id: "FA8F9F0A-5BDA-4105-A177-E7992A22D643", 
+										versionId: "1.0.0",
 										name: "NewUserLoginFeature", 
 										synopsis: "A/B testing for new user greeting")
 ```
 
 - Implement a `FeatureSource` that will return a `ConditionalFeature` for a specified `FeatureContext` and `FeatureSignature`. 
+
+- A `FeatureSource` could encapsulate device local resources such as a JSON file, a PLIST, `NSUserDefaults`, CoreData, a Realm file or payloads from a remote API or indeed a composite of any or all of the above.
 
 - Instantiate a `FeatureToggle` corresponding to each `Feature` you wish to execute conditionally. Compose each `FeatureToggle` with your `FeatureSource` implementation.
 
