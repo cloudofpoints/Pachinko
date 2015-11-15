@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DynamicCacheingFeatureSource: FeatureSource {
+public struct DynamicCacheingFeatureSource: FeatureSource, Versionable {
 
     var featureCache: FeatureSource
     var remoteFeatureSource: FeatureSource?
@@ -27,7 +27,7 @@ public struct DynamicCacheingFeatureSource: FeatureSource {
         featureCache.refresh()
     }
     
-    public func activeVersion() -> String {
+    public func activeVersion() -> FeatureVersion? {
         return featureCache.activeVersion()
     }
         

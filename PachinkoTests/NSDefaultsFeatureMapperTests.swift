@@ -19,7 +19,7 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
     let testContextFixtureName = "TestContext"
     let testContextFixtureSynopsis = "Unit test context fixture"
     let testFeatureFixtureId = "001"
-    let testFeatureFixtureVersionId = "1.0.0"
+    let testFeatureFixtureVersionId = FeatureVersion(major: 1, minor: 0, patch: 0)
     let testFeatureFixtureName = "TestFeature1"
     let testFeatureFixtureSynopsis = "Unit test feature fixture"
     let testFeatureFixtureStatusActive = "Active"
@@ -68,7 +68,7 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
     
     func defaultsItemFixture() -> [String:String] {
         return [FeaturePlistKey.FEATURE_ID.rawValue : testFeatureFixtureId,
-            FeaturePlistKey.FEATURE_VERSION_ID.rawValue: testFeatureFixtureVersionId,
+            FeaturePlistKey.FEATURE_VERSION_ID.rawValue: testFeatureFixtureVersionId.description(),
             FeaturePlistKey.FEATURE_NAME.rawValue : testFeatureFixtureName,
             FeaturePlistKey.FEATURE_SYNOPSIS.rawValue : testFeatureFixtureSynopsis,
             FeaturePlistKey.FEATURE_STATUS.rawValue : testFeatureFixtureStatusActive]
