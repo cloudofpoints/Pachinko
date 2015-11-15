@@ -35,7 +35,7 @@
 To integrate `Pachinko` into your Xcode project using Carthage, add the following to your local `Cartfile`:
 
 ```ogdl
-github "cloudofpoints/pachinko" ~> 1.0.1
+github "cloudofpoints/pachinko" ~> 1.0.2
 ```
 
 ### CocoaPods
@@ -56,7 +56,7 @@ let myLoginContext = FeatureContext(name: "UserLogin",
 
 ```swift
 let myNewUserLoginSignature = FeatureSignature(id: "FA8F9F0A-5BDA-4105-A177-E7992A22D643", 
-										versionId: "1.0.0",
+										versionId: FeatureVersion("1.0.0"),
 										name: "NewUserLoginFeature", 
 										synopsis: "A/B testing for new user greeting")
 ```
