@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BaseFeature : ConditionalFeature, PListTemplatable {
+public class BaseFeature : ConditionalFeature, Versionable, PListTemplatable {
     public let signature: FeatureSignature
     public var status: FeatureStatus = FeatureStatus.Initialised
     
@@ -19,6 +19,10 @@ public class BaseFeature : ConditionalFeature, PListTemplatable {
     
     public convenience init(signature: FeatureSignature){
         self.init(signature: signature, status: FeatureStatus.Initialised)
+    }
+    
+    public func activeVersion() -> FeatureVersion? {
+        return signature.versionId
     }
     
     public required init?(template: NSDictionary?) {

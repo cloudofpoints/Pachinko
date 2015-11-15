@@ -8,8 +8,7 @@
 
 import Foundation
 
-public protocol FeatureSource {
+public protocol FeatureSource: Versionable {
     func activeFeature(context: FeatureContext, signature: FeatureSignature) -> ConditionalFeature?
     mutating func refresh() -> Void
-    func activeVersion() -> String
 }

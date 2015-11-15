@@ -13,10 +13,10 @@ public class StubFeatureSource : FeatureSource {
     
     let testContextOne = FeatureContext(id: "com.cloudofpoints.pachinko.context1", name: "TestContext1", synopsis: "TestContext1 Features")
     let testContextTwo = FeatureContext(id: "com.cloudofpoints.pachinko.context2", name: "TestContext2", synopsis: "TestContext2 Features")
-    let loginFeatureSignature = FeatureSignature(id: "001", versionId: "1.0.0", name: "LoginFeature", synopsis: "Test login feature")
-    let campaignFeatureSignature = FeatureSignature(id: "002", versionId: "1.0.0", name: "CampaignFeature", synopsis: "Test campaign feature")
-    let buttonABTestSignature_A = FeatureSignature(id: "003", versionId: "1.0.0", name: "ButtonABTestFeature_A", synopsis: "Button A/B testing - A")
-    let buttonABTestSignature_B = FeatureSignature(id: "004", versionId: "1.0.0", name: "ButtonABTestFeature_B", synopsis: "Button A/B testing - B")
+    let loginFeatureSignature = FeatureSignature(id: "001", versionId: FeatureVersion(major: 1, minor: 0, patch: 0), name: "LoginFeature", synopsis: "Test login feature")
+    let campaignFeatureSignature = FeatureSignature(id: "002", versionId: FeatureVersion(major: 1, minor: 0, patch: 0), name: "CampaignFeature", synopsis: "Test campaign feature")
+    let buttonABTestSignature_A = FeatureSignature(id: "003", versionId: FeatureVersion(major: 1, minor: 0, patch: 0), name: "ButtonABTestFeature_A", synopsis: "Button A/B testing - A")
+    let buttonABTestSignature_B = FeatureSignature(id: "004", versionId: FeatureVersion(major: 1, minor: 0, patch: 0), name: "ButtonABTestFeature_B", synopsis: "Button A/B testing - B")
     
     private lazy var featureCache: [FeatureContext : [FeatureSignature : ConditionalFeature]] = self.populateFeatureCache()
     
@@ -45,7 +45,7 @@ public class StubFeatureSource : FeatureSource {
         featureCache = populateFeatureCache()
     }
     
-    public func activeVersion() -> String {
-        return "1.0.0"
+    public func activeVersion() -> FeatureVersion? {
+        return FeatureVersion(major: 1, minor: 0, patch: 0)
     }
 }

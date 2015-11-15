@@ -29,28 +29,27 @@ public struct FeatureContext : Hashable {
     }
 }
 
-extension FeatureContext: PListTemplatable {
+extension FeatureContext: PListTemplatable, Versionable {
  
     public init?(template: NSDictionary?) {
         guard let context = template else {
             return nil
         }
-        if let id = context[FeaturePlistKey.CONTEXT_ID.rawValue] as? String,
+        
+        guard let id = context[FeaturePlistKey.CONTEXT_ID.rawValue] as? String,
             name = context[FeaturePlistKey.CONTEXT_NAME.rawValue] as? String,
-            synopsis = context[FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue] as? String {
-                self.id = id
-                self.name = name
-                self.synopsis = synopsis
-                
-                if let featureTemplates = context[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [NSDictionary] {
-                    
-                    if let featureModels: [ConditionalFeature]? = featureTemplates.map({BaseFeature(template: $0)!}) {
-                        self.features = featureModels
-                    }
-                }
-                
-        } else {
-            return nil
+            synopsis = context[FeaturePlistKey.CONTEXT_SYNOPSIS.rawValue] as? String else {
+                return nil
+        }
+        
+        self.id = id
+        self.name = name
+        self.synopsis = synopsis
+        
+        if let featureTemplates = context[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [NSDictionary] {
+            if let featureModels: [ConditionalFeature]? = featureTemplates.map({BaseFeature(template: $0)!}) {
+                self.features = featureModels
+            }
         }
     }
     
@@ -69,6 +68,19 @@ extension FeatureContext: PListTemplatable {
         }
         
         return template
+    }
+    
+    public func activeVersion() -> FeatureVersion? {
+        
+        guard let contextFeatures = features else {
+            return .None
+        }
+        
+        guard let maxActiveVersion = contextFeatures.map({$0.signature.versionId}).maxElement() else {
+            return .None
+        }
+        
+        return maxActiveVersion
     }
     
 }

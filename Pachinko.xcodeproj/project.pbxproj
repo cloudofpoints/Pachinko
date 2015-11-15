@@ -17,6 +17,8 @@
 		D47658461BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */; };
 		D4BA03A01BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */; };
 		D4BA03A41BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */; };
+		D4E84ACC1BF8DEB200D035B8 /* Versionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84ACB1BF8DEB200D035B8 /* Versionable.swift */; };
+		D4E84ACE1BF8DF5800D035B8 /* FeatureVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84ACD1BF8DF5800D035B8 /* FeatureVersion.swift */; };
 		D4F44F3D1BEAC16B00B94B0F /* NSDefaultsFeatureMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F44F3C1BEAC16B00B94B0F /* NSDefaultsFeatureMapperTests.swift */; };
 		D4F44F3F1BEAC25000B94B0F /* PListFeatureReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F44F3E1BEAC25000B94B0F /* PListFeatureReaderTests.swift */; };
 		D4F44F411BEAC3B900B94B0F /* TestPListFeatureReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F44F401BEAC3B900B94B0F /* TestPListFeatureReader.swift */; };
@@ -60,6 +62,8 @@
 		D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeltaCapableFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCacheingFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsBackedFeatureSource.swift; sourceTree = "<group>"; };
+		D4E84ACB1BF8DEB200D035B8 /* Versionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versionable.swift; sourceTree = "<group>"; };
+		D4E84ACD1BF8DF5800D035B8 /* FeatureVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureVersion.swift; sourceTree = "<group>"; };
 		D4F44F3C1BEAC16B00B94B0F /* NSDefaultsFeatureMapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDefaultsFeatureMapperTests.swift; sourceTree = "<group>"; };
 		D4F44F3E1BEAC25000B94B0F /* PListFeatureReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListFeatureReaderTests.swift; sourceTree = "<group>"; };
 		D4F44F401BEAC3B900B94B0F /* TestPListFeatureReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPListFeatureReader.swift; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 				FB2ABCAB1BCBDE8600F681C5 /* FeatureSignature.swift */,
 				FB2ABCA91BCBDE2500F681C5 /* FeatureStatus.swift */,
 				FB2ABCB31BCC0D9C00F681C5 /* FeatureContext.swift */,
+				D4E84ACB1BF8DEB200D035B8 /* Versionable.swift */,
+				D4E84ACD1BF8DF5800D035B8 /* FeatureVersion.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -329,9 +335,11 @@
 				FB2ABCBC1BCC0EC900F681C5 /* ToggleCondition.swift in Sources */,
 				D4F44F431BEAC53700B94B0F /* NSDefaultsFeatureMapper.swift in Sources */,
 				D4BA03A41BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift in Sources */,
+				D4E84ACC1BF8DEB200D035B8 /* Versionable.swift in Sources */,
 				D44060551BD4457500AE6A87 /* FeaturePlistKey.swift in Sources */,
 				FB2ABCB01BCBDF1300F681C5 /* FeaturePredicate.swift in Sources */,
 				D47658461BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift in Sources */,
+				D4E84ACE1BF8DF5800D035B8 /* FeatureVersion.swift in Sources */,
 				D4F547631BE6CDBE00E6684C /* PListFeatureReader.swift in Sources */,
 				FB2ABCAC1BCBDE8600F681C5 /* FeatureSignature.swift in Sources */,
 			);

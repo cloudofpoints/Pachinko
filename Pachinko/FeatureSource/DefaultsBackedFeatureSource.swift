@@ -63,12 +63,19 @@ public struct DefaultsBackedFeatureSource: FeatureSource, NSDefaultsFeatureMappe
         return true
     }
     
-    // MARK: -
-    // TODO: -
+    public func activeVersion() -> FeatureVersion? {
     
-    public func activeVersion() -> String {
-        // Derive max activeVersion from each Context
-        return "1.0.0"
+        guard let features = featureCache else {
+            return .None
+        }
+        
+        let contexts = Array(features.values)
+        
+        if let maxActiveVersion = contexts.map({$0.activeVersion()}).flatMap({$0}).maxElement() {
+            return maxActiveVersion
+        } else {
+            return .None
+        }
     }
 
 }
