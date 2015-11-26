@@ -15,6 +15,7 @@
 		D44B9EE11BF7A1A40065D058 /* FeatureContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44B9EE01BF7A1A40065D058 /* FeatureContextTests.swift */; };
 		D47658431BEE89D300F78B0B /* PListTemplatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658421BEE89D300F78B0B /* PListTemplatable.swift */; };
 		D47658461BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */; };
+		D49BA25A1BFE3F15001A2A59 /* CachableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49BA2591BFE3F15001A2A59 /* CachableSource.swift */; };
 		D4BA03A01BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */; };
 		D4BA03A41BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */; };
 		D4E84ACC1BF8DEB200D035B8 /* Versionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84ACB1BF8DEB200D035B8 /* Versionable.swift */; };
@@ -60,6 +61,7 @@
 		D44B9EE01BF7A1A40065D058 /* FeatureContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureContextTests.swift; sourceTree = "<group>"; };
 		D47658421BEE89D300F78B0B /* PListTemplatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListTemplatable.swift; sourceTree = "<group>"; };
 		D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeltaCapableFeatureSource.swift; sourceTree = "<group>"; };
+		D49BA2591BFE3F15001A2A59 /* CachableSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachableSource.swift; sourceTree = "<group>"; };
 		D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCacheingFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsBackedFeatureSource.swift; sourceTree = "<group>"; };
 		D4E84ACB1BF8DEB200D035B8 /* Versionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versionable.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */,
 				FB2ABCB51BCC0DDE00F681C5 /* FeatureSource.swift */,
 				D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */,
+				D49BA2591BFE3F15001A2A59 /* CachableSource.swift */,
 			);
 			path = FeatureSource;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				FB2ABCB41BCC0D9C00F681C5 /* FeatureContext.swift in Sources */,
 				FB2ABCB61BCC0DDE00F681C5 /* FeatureSource.swift in Sources */,
+				D49BA25A1BFE3F15001A2A59 /* CachableSource.swift in Sources */,
 				D4BA03A01BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift in Sources */,
 				FB25E6E51BCD16A900EE70C5 /* FeatureToggle.swift in Sources */,
 				D47658431BEE89D300F78B0B /* PListTemplatable.swift in Sources */,

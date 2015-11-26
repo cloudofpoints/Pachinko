@@ -9,8 +9,8 @@
 import Foundation
 
 public protocol Feature {
-    
     var signature: FeatureSignature { get }
     var status: FeatureStatus {get set}
     func isActive() -> Bool
 }
+

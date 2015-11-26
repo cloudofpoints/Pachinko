@@ -17,7 +17,7 @@ public struct FeatureContext : Hashable {
     public let id: String
     public let name: String
     public let synopsis: String
-    public var features: [ConditionalFeature]?
+    public var features: [BaseFeature]?
     public var hashValue: Int {
         return (31 &* id.hashValue) &+ name.hashValue &+ synopsis.hashValue
     }
@@ -26,6 +26,14 @@ public struct FeatureContext : Hashable {
         self.id = id
         self.name = name
         self.synopsis = synopsis
+    }
+    
+    public func featureSet() -> Set<BaseFeature>? {
+        guard let contextFeatures = features else {
+            return .None
+        }
+        
+        return Set<BaseFeature>(contextFeatures)
     }
 }
 
@@ -47,7 +55,7 @@ extension FeatureContext: PListTemplatable, Versionable {
         self.synopsis = synopsis
         
         if let featureTemplates = context[FeaturePlistKey.CONTEXT_FEATURES.rawValue] as? [NSDictionary] {
-            if let featureModels: [ConditionalFeature]? = featureTemplates.map({BaseFeature(template: $0)!}) {
+            if let featureModels: [BaseFeature]? = featureTemplates.map({BaseFeature(template: $0)!}) {
                 self.features = featureModels
             }
         }
@@ -61,8 +69,7 @@ extension FeatureContext: PListTemplatable, Versionable {
         
         if let featureModels = features {
             
-            let featureTemplates: [AnyObject] = featureModels.map({$0 as? PListTemplatable})
-                                                            .flatMap({$0?.plistTemplate()})
+            let featureTemplates: [AnyObject] = featureModels.flatMap({$0.plistTemplate()})
             
             template[FeaturePlistKey.CONTEXT_FEATURES.rawValue] = featureTemplates
         }

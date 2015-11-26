@@ -8,9 +8,16 @@
 
 import Foundation
 
-public class BaseFeature : ConditionalFeature, Versionable, PListTemplatable {
+public func ==(lhs: BaseFeature, rhs: BaseFeature) -> Bool {
+    return lhs.signature == rhs.signature && lhs.status == rhs.status
+}
+
+public class BaseFeature : Hashable, ConditionalFeature, Versionable, PListTemplatable {
     public let signature: FeatureSignature
     public var status: FeatureStatus = FeatureStatus.Initialised
+    public var hashValue: Int {
+        return (31 &* signature.hashValue) &+ status.hashValue
+    }
     
     public init(signature: FeatureSignature, status: FeatureStatus){
         self.signature = signature

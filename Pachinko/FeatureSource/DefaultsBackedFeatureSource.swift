@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DefaultsBackedFeatureSource: FeatureSource, NSDefaultsFeatureMapper, PListFeatureReader {
+public struct DefaultsBackedFeatureSource: CachableSource, NSDefaultsFeatureMapper, PListFeatureReader {
     
     static let pachinkoPListName = "Pachinko"
     static let pachinkoDefaultsDomain = "com.cloudofpoints.pachinko"
@@ -36,6 +36,15 @@ public struct DefaultsBackedFeatureSource: FeatureSource, NSDefaultsFeatureMappe
     
     public mutating func refresh() {
         featureCache = featureContexts(DefaultsBackedFeatureSource.pachinkoDefaultsDomain)
+    }
+    
+    // MARK: - CacheableSource Protocol
+    
+    public func context(forKey contextKey: String) -> FeatureContext? {
+        guard let context =  featureCache?[contextKey] else {
+            return .None
+        }
+        return context
     }
     
     // MARK: - Read Features from PLIST

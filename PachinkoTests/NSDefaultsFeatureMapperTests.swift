@@ -156,9 +156,9 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
         let expectedContext = FeatureContext(id: "com.cloudofpoints.pachinko.context.1", name: plistContextFixtureName, synopsis: plistContextFixtureSynopsis)
         let expectedFeatureSignature = FeatureSignature(id: plistFeatureFixtureId, versionId: testFeatureFixtureVersionId, name: plistFeatureFixtureName, synopsis: plistFeatureFixtureSynopsis)
         if let actualContext: FeatureContext = features?[expectedContext.id] {
-            let actualFeatures: [ConditionalFeature]? = actualContext.features
+            let actualFeatures: [BaseFeature]? = actualContext.features
             XCTAssertNotNil(actualFeatures, "Features retrieved from defaults should contain expected context")
-            let actualFeature: ConditionalFeature? = actualFeatures?.first
+            let actualFeature: BaseFeature? = actualFeatures?.first
             XCTAssertEqual(expectedFeatureSignature, actualFeature?.signature)
         } else {
             XCTFail()

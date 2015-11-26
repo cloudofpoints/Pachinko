@@ -8,6 +8,10 @@
 
 import Foundation
 
+public enum FeatureSourceError: ErrorType {
+    case InvalidVersion(version: FeatureVersion)
+}
+
 public protocol DeltaCapableFeatureSource: FeatureSource {
-    
+    func featureDeltas(forVersion: FeatureVersion) throws -> [String:FeatureContext]?
 }
