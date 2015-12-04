@@ -8,14 +8,19 @@
 
 import Foundation
 
-public protocol NSDefaultsFeatureMapper {}
+public protocol NSDefaultsFeatureMapper {
+    func defaultsProvider() -> DefaultsProvider
+}
 
 public extension NSDefaultsFeatureMapper {
 
+    public func defaultsProvider() -> DefaultsProvider {
+        return NSUserDefaultsProvider()
+    }
     
     public func featureContexts(domain: String) -> [String:FeatureContext]? {
     
-        guard let pachinkoDefaults = NSUserDefaults.standardUserDefaults().persistentDomainForName(domain) else {
+        guard let pachinkoDefaults = defaultsProvider().defaultsDictionary(forDomain: domain) else {
             return .None
         }
         
@@ -29,6 +34,32 @@ public extension NSDefaultsFeatureMapper {
             contextsDict[context.id] = context
         }
         return contextsDict
+    }
+    
+    public func updateFeatureContext(context: FeatureContext, forKey contextKey: String, inDomain domain: String) -> Void {
+        
+        guard let pachinkoDefaults = defaultsProvider().defaultsDictionary(forDomain: domain) else {
+            return
+        }
+        
+        guard let templates = pachinkoDefaults[FeaturePlistKey.PACHINKO_FEATURES.rawValue] as? [[String:AnyObject]] else {
+            return
+        }
+  
+        var templateDictionaries = [NSDictionary]()
+  
+        for var contextDict in templates {
+            if let contextId = contextDict[FeaturePlistKey.CONTEXT_ID.rawValue] as? String {
+                if contextId == contextKey {
+                    templateDictionaries.append(context.plistTemplate())
+                    continue
+                }
+            }
+            templateDictionaries.append(contextDict)
+        }
+  
+        let updatedDefaults = [FeaturePlistKey.PACHINKO_FEATURES.rawValue : templateDictionaries]
+        defaultsProvider().writeDefaults(defaultsDictionary: updatedDefaults, forDomain: domain)
     }
     
     public func importModel<T:PListTemplatable>(templates: [AnyObject]?) -> [T] {
@@ -51,3 +82,5 @@ public extension NSDefaultsFeatureMapper {
         return modelArray
     }
 }
+
+public struct NSUserDefaultsProvider: DefaultsProvider {}

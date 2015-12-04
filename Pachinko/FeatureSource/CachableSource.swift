@@ -10,10 +10,22 @@ import Foundation
 
 public protocol CachableSource: FeatureSource {
     func context(forKey contextKey: String) -> FeatureContext?
+    mutating func setContext(context: FeatureContext, forKey contextKey: String) -> Void
 }
 
 extension CachableSource {
     subscript(key: String) -> FeatureContext? {
-        return context(forKey: key)
+    
+        get {
+            return context(forKey: key)
+        }
+
+        set(newValue){
+            guard let newContextValue = newValue else {
+                return
+            }
+            setContext(newContextValue, forKey: key)
+        }
+
     }
 }

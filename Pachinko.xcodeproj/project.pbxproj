@@ -16,6 +16,7 @@
 		D47658431BEE89D300F78B0B /* PListTemplatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658421BEE89D300F78B0B /* PListTemplatable.swift */; };
 		D47658461BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */; };
 		D49BA25A1BFE3F15001A2A59 /* CachableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49BA2591BFE3F15001A2A59 /* CachableSource.swift */; };
+		D49BA25C1C10B8EF001A2A59 /* DefaultsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49BA25B1C10B8EF001A2A59 /* DefaultsProvider.swift */; };
 		D4BA03A01BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */; };
 		D4BA03A41BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */; };
 		D4E84ACC1BF8DEB200D035B8 /* Versionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84ACB1BF8DEB200D035B8 /* Versionable.swift */; };
@@ -62,6 +63,7 @@
 		D47658421BEE89D300F78B0B /* PListTemplatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PListTemplatable.swift; sourceTree = "<group>"; };
 		D47658451BF1DA6000F78B0B /* DeltaCapableFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeltaCapableFeatureSource.swift; sourceTree = "<group>"; };
 		D49BA2591BFE3F15001A2A59 /* CachableSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachableSource.swift; sourceTree = "<group>"; };
+		D49BA25B1C10B8EF001A2A59 /* DefaultsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsProvider.swift; sourceTree = "<group>"; };
 		D4BA039F1BDD55F800AFB4D3 /* DynamicCacheingFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCacheingFeatureSource.swift; sourceTree = "<group>"; };
 		D4BA03A31BDD8E1700AFB4D3 /* DefaultsBackedFeatureSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsBackedFeatureSource.swift; sourceTree = "<group>"; };
 		D4E84ACB1BF8DEB200D035B8 /* Versionable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Versionable.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				D4F547621BE6CDBE00E6684C /* PListFeatureReader.swift */,
 				D4F44F421BEAC53700B94B0F /* NSDefaultsFeatureMapper.swift */,
 				D47658421BEE89D300F78B0B /* PListTemplatable.swift */,
+				D49BA25B1C10B8EF001A2A59 /* DefaultsProvider.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				FB2ABC821BCBDC8300F681C5 /* Frameworks */,
 				FB2ABC831BCBDC8300F681C5 /* Headers */,
 				FB2ABC841BCBDC8300F681C5 /* Resources */,
+				D468AD601C10FFE70076C421 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -255,6 +259,7 @@
 				FB2ABC8C1BCBDC8300F681C5 /* Sources */,
 				FB2ABC8D1BCBDC8300F681C5 /* Frameworks */,
 				FB2ABC8E1BCBDC8300F681C5 /* Resources */,
+				D468AD611C10FFFF0076C421 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -320,6 +325,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D468AD601C10FFE70076C421 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		D468AD611C10FFFF0076C421 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FB2ABC811BCBDC8300F681C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -335,6 +371,7 @@
 				FB2ABCB81BCC0E0F00F681C5 /* Togglable.swift in Sources */,
 				FB2ABCAA1BCBDE2500F681C5 /* FeatureStatus.swift in Sources */,
 				FB2ABCBA1BCC0E9200F681C5 /* BaseFeature.swift in Sources */,
+				D49BA25C1C10B8EF001A2A59 /* DefaultsProvider.swift in Sources */,
 				FB2ABCB21BCBDF3100F681C5 /* ConditionalFeature.swift in Sources */,
 				FB2ABCBC1BCC0EC900F681C5 /* ToggleCondition.swift in Sources */,
 				D4F44F431BEAC53700B94B0F /* NSDefaultsFeatureMapper.swift in Sources */,

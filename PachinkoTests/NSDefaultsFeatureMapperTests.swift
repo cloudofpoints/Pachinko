@@ -9,7 +9,32 @@
 import XCTest
 @testable import Pachinko
 
-struct TestDefaultsFeatureMapper: NSDefaultsFeatureMapper {}
+public class TestDefaultsFeatureMapper: NSDefaultsFeatureMapper {
+
+    let testDefaultsProvider: DefaultsProvider = TestDefaultsProvider()
+
+    public func defaultsProvider() -> DefaultsProvider {
+        return testDefaultsProvider
+    }
+}
+
+public class TestDefaultsProvider: DefaultsProvider {
+
+    var defaultsDictionary = [String:AnyObject]()
+    
+    public func defaultsDictionary(forDomain domain: String) -> [String : AnyObject]? {
+        return defaultsDictionary
+    }
+    
+    public func purgeDefaults(forDomain domain: String) {
+        defaultsDictionary = [String:AnyObject]()
+    }
+    
+    public func writeDefaults(defaultsDictionary defaults: [String : AnyObject], forDomain domain: String) {
+        defaultsDictionary = defaults
+    }
+    
+}
 
 class NSDefaultsFeatureMapperTests: XCTestCase {
     
@@ -18,8 +43,10 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
     let testContextFixtureId = "com.cloudofpoints.pachinko.context.1"
     let testContextFixtureName = "TestContext"
     let testContextFixtureSynopsis = "Unit test context fixture"
+    let testUpdatedContextFixtureSynopsis = "Updated unit test context fixture"
     let testFeatureFixtureId = "001"
     let testFeatureFixtureVersionId = FeatureVersion(major: 1, minor: 0, patch: 0)
+    let testUpdateFeatureFixtureVersionId = FeatureVersion(major: 1, minor: 1, patch: 0)
     let testFeatureFixtureName = "TestFeature1"
     let testFeatureFixtureSynopsis = "Unit test feature fixture"
     let testFeatureFixtureStatusActive = "Active"
@@ -52,11 +79,11 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
             return
         }
             
-        NSUserDefaults.standardUserDefaults().setPersistentDomain(features, forName: testDefaultsDomain)
+        testFeatureMapper.defaultsProvider().writeDefaults(defaultsDictionary: features, forDomain: testDefaultsDomain)
     }
     
     func purgeDefaultsTestFixture() {
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(testDefaultsDomain)
+        testFeatureMapper.defaultsProvider().purgeDefaults(forDomain: testDefaultsDomain)
     }
     
     func defaultsContextFixture() -> [String:String] {
@@ -149,8 +176,6 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
     }
     
     func testFeaturesFromDefaultsTestTargetBundle() {
-        let testBundle = NSBundle(forClass: FeatureSourceTests.self)
-        testFeatureMapper = DefaultsBackedFeatureSource(featureBundle: testBundle)
         let features: [String:FeatureContext]? = testFeatureMapper.featureContexts(testDefaultsDomain)
         XCTAssertNotNil(features, "Features loaded from PLIST should not be nil")
         let expectedContext = FeatureContext(id: "com.cloudofpoints.pachinko.context.1", name: plistContextFixtureName, synopsis: plistContextFixtureSynopsis)
@@ -161,9 +186,30 @@ class NSDefaultsFeatureMapperTests: XCTestCase {
             let actualFeature: BaseFeature? = actualFeatures?.first
             XCTAssertEqual(expectedFeatureSignature, actualFeature?.signature)
         } else {
-            XCTFail()
+            XCTFail("Test execution should not reach this point")
         }
 
+    }
+    
+    func testUpdateFeatureContexts() {
+//        let features: [String:FeatureContext]? = testFeatureMapper.featureContexts(testDefaultsDomain)
+//        XCTAssertNotNil(features, "Features loaded from PLIST should not be nil")
+        var updatedContext = FeatureContext(id: "com.cloudofpoints.pachinko.context.2", name: "SecondSampleFeatureContext", synopsis: "A second sample feature context")
+        let updatedFeatureSignature = FeatureSignature(id: "004", versionId: testUpdateFeatureFixtureVersionId, name: "SampleFeature4", synopsis: testUpdatedContextFixtureSynopsis)
+        updatedContext.features = [BaseFeature(signature: updatedFeatureSignature)]
+        testFeatureMapper.updateFeatureContext(updatedContext, forKey: updatedContext.id, inDomain: testDefaultsDomain)
+        if let features = testFeatureMapper.featureContexts(testDefaultsDomain) {
+            
+            if let actualContext: FeatureContext = features[updatedContext.id] {
+                
+                XCTAssertEqual(actualContext.synopsis, updatedContext.synopsis, "Updated context synopsis should equal expected value")
+                let actualFeature = actualContext.features?.first
+                XCTAssertEqual(actualFeature?.signature.versionId, updatedFeatureSignature.versionId,"Updated feature version should equal expected value")
+            }
+            
+        } else {
+            XCTFail("Test execution should not reach this point")
+        }
     }
 
 }

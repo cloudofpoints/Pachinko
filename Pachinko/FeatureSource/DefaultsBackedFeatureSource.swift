@@ -47,6 +47,10 @@ public struct DefaultsBackedFeatureSource: CachableSource, NSDefaultsFeatureMapp
         return context
     }
     
+    public mutating func setContext(context: FeatureContext, forKey contextKey: String) {
+        featureCache?[contextKey] = context
+    }
+    
     // MARK: - Read Features from PLIST
     
     public func loadFeaturesFromPList(pListName: String,

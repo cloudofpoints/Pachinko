@@ -53,7 +53,11 @@ public class BaseFeature : Hashable, ConditionalFeature, Versionable, PListTempl
     }
     
     public func plistTemplate() -> NSDictionary {
-        let template: [String:AnyObject] = [:]
+        let template = [FeaturePlistKey.FEATURE_NAME.rawValue : signature.name,
+                        FeaturePlistKey.FEATURE_ID.rawValue : signature.id,
+                        FeaturePlistKey.FEATURE_SYNOPSIS.rawValue : signature.synopsis,
+                        FeaturePlistKey.FEATURE_VERSION_ID.rawValue : signature.versionId.description(),
+                        FeaturePlistKey.FEATURE_STATUS.rawValue : status.rawValue]
         return template
     }
 }

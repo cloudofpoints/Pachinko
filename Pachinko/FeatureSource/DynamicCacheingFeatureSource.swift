@@ -28,32 +28,16 @@ public struct DynamicCacheingFeatureSource: FeatureSource, Versionable {
         if let maxVersion = activeVersion(),
             let remoteSource = remoteFeatureSource {
             
-                deltaLoop: do {
+            deltaLoop: do {
             
-                // Get latest deltas from remote feature source
-                guard let _ = try remoteSource.featureDeltas(maxVersion) else {
+                guard let deltas = try remoteSource.featureDeltas(maxVersion) else {
                     break deltaLoop
                 }
 
-                // Compare with local cache
-//                for (contextKey,deltaContext) in deltas {
-//                    
-//                    if let currContext = featureCache[contextKey] {
-//                        
-//                        // An out of date context exists
-//                        // Check each feature in the curr context against those in the delta 
-//                        
-//                        
-//                        
-//                        
-//                        // Update the out of date features from the delta
-//                        
-//                    }
-//                    
-//                }
-                // - Do set comparison to get updated Features
-                // - Add updated features to FeatureContext
-                // Update local cache source
+                for (contextKey,deltaContext) in deltas {
+                    featureCache[contextKey] = deltaContext
+                }
+
                 
             } catch let remoteError as FeatureSourceError {
                 print("Failed to load feature deltas from remote source : \(remoteError)")
