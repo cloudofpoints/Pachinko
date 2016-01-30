@@ -3,7 +3,7 @@
 
 ## Pachinko
 
-[![Twitter: @KauseFx](https://img.shields.io/badge/contact-@cloudofpoints-blue.svg?style=flat)](https://twitter.com/cloudofpoints)
+[![Twitter: @cloudofpoints](https://img.shields.io/badge/contact-@cloudofpoints-blue.svg?style=flat)](https://twitter.com/cloudofpoints)
 [![Build Status](https://travis-ci.org/cloudofpoints/Pachinko.svg)](https://travis-ci.org/cloudofpoints/Pachinko)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
